@@ -1,11 +1,9 @@
-Bookmarks
+Conclave
 =========
 
-tog_bookmarks is a little delicious clone.
+tog_conclave is a plugin for managing events in your site.
+
 
 == Included functionality
 
-* Addresses (URLs) and bookmarks
-* Bookmarks counter for each address
-* Share bookmarks between users and groups
-* Bookmark privacy: public, private, social network and group members
+
