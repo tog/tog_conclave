@@ -1,0 +1,7 @@
+	<%if logged_in? && event.attendees.include?(current_user)%>
+		¡Apuntado!. <%=link_to_remote 'No asistiré', :url=>member_conclave_unregister_path(event), :update=>"current_status"+event.id.to_s%> 
+	<%else%>
+	  <%if event.available_places > 0 %>
+		  <%=link_to_remote 'Asistiré', :url=>member_conclave_register_path(event), :update=>"current_status"+event.id.to_s%> 
+		<%end%>
+	<%end%>

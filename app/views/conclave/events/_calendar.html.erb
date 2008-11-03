@@ -1,0 +1,18 @@
+<%dates = dates_with_events%>
+<div class="portlet2">
+    <div class="round tr round3"><div class="round tl round3"></div></div>
+    <div class="round3_content">Días</div>
+    <div class="round2_content">
+        <ul class="list4">
+          <% if dates.empty? %>
+                  <li>Todavía no hay conferencias.</li>
+                <% else %>
+              <% dates.each do |date| %>
+                <li>
+                  <%= link_to date.to_s, by_date_conclave_events_path(date)%></li>
+              <% end %>
+          <% end %> 
+        </ul>
+    </div>
+    <div class="round br round2"><div class="round bl round2"></div></div>
+</div> <!-- /. portlet2 -->

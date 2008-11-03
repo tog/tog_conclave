@@ -12,10 +12,10 @@ class Member::Conclave::EventsController < Member::BaseController
   end
   
   def unregister
-    event = current_user.events.find(params[:id])
-    event.unregister(current_user)
+    @event = current_user.events.find(params[:id])
+    @event.unregister(current_user)
     flash[:ok] = I18n.t("tog_conclave.member.unregistered", :title => @event.title)
-    redirect_to(conclave_event_path(event))
+    redirect_to(conclave_event_path(@event))
   end
   
 end
