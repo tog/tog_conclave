@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/youlivek/!svn/ver/87/trunk/vendor/plugins/tog_conclave/db/migrate
+END
+003_add_number_of_places_to_event.rb
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/repos/youlivek/!svn/ver/80/trunk/vendor/plugins/tog_conclave/db/migrate/003_add_number_of_places_to_event.rb
+END
+002_create_registrations.rb
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/youlivek/!svn/ver/87/trunk/vendor/plugins/tog_conclave/db/migrate/002_create_registrations.rb
+END
+001_create_events.rb
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/repos/youlivek/!svn/ver/7/trunk/vendor/plugins/tog_conclave/db/migrate/001_create_events.rb
+END

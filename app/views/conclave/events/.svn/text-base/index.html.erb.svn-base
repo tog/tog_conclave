@@ -1,0 +1,17 @@
+<%dates = dates_with_events%>
+<div class="portlet portletB">
+    <h2><span>Events</span></h2>
+
+    <div class="portlet_content"> 
+        <ul>
+          <% if dates.empty? %>
+            <li class="clearfix">There isn't any event yet.
+          <% else %>
+              <% dates.each do |date| %>
+                <li class="clearfix">
+                  <%= link_to date.to_s, by_date_conclave_events_path(date)%>
+              <% end %>
+          <% end %> 
+        </ul>
+    </div>    
+</div>

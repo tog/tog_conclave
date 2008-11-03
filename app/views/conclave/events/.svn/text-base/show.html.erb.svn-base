@@ -1,0 +1,31 @@
+<h2><span><%= @event.title -%></span></h2>
+
+<div class="detail detail1">
+    <div class="text"><%= sanitize textilize(@event.description) %></div>  
+    
+</div> <!-- /.detail1 -->
+<br/>
+Start date: <%=@event.start_date.to_s %>
+<br/>
+End date: <%=@event.end_date.to_s %>
+<br/>
+Start time: <%=@event.start_time.to_s %>
+<br/>
+End time: <%=@event.end_time.to_s %>
+<%if @event.url%>
+<br/>
+Url: <%=link_to @event.url,@event.url%>
+<%end%>
+<br/>
+Venue: <%= @event.venue%>
+<br/>
+Venue link: <%= @event.venue_link%>
+<br/>
+Room: <%= @event.room%>
+<br/>
+Duration: <%= @event.duration%>
+<br/>
+Type: <%= @event.type%>
+<br/>
+Target: <%= @event.target%>
+

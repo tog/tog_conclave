@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/repos/youlivek/!svn/ver/60/trunk/vendor/plugins/tog_conclave/app/views/conclave/events
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/repos/youlivek/!svn/ver/59/trunk/vendor/plugins/tog_conclave/app/views/conclave/events/index.html.erb
+END
+by_date.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/repos/youlivek/!svn/ver/60/trunk/vendor/plugins/tog_conclave/app/views/conclave/events/by_date.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/repos/youlivek/!svn/ver/60/trunk/vendor/plugins/tog_conclave/app/views/conclave/events/show.html.erb
+END

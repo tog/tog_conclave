@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/youlivek/!svn/ver/88/trunk/vendor/plugins/tog_conclave/app/models
+END
+user.rb
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/youlivek/!svn/ver/88/trunk/vendor/plugins/tog_conclave/app/models/user.rb
+END
+event.rb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/youlivek/!svn/ver/88/trunk/vendor/plugins/tog_conclave/app/models/event.rb
+END
+attendance.rb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/youlivek/!svn/ver/87/trunk/vendor/plugins/tog_conclave/app/models/attendance.rb
+END
