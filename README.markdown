@@ -1,6 +1,8 @@
 Conclave
 =========
 
+WORK IN PROGRESS. NOT READED FOR PRIME-TIME YET.
+
 tog_conclave is a plugin for managing events in your site.
 
 
@@ -11,8 +13,9 @@ Included functionality
 ----------------------
 
 * Event list
-* Calendar navigation
+* Calendar/date navigation
 * Attendance management
+* event capacity limit
 
 
 Resources
@@ -21,12 +24,9 @@ Resources
 Plugin requirements
 -------------------
 
-require_plugin 'acts_as_taggable_on_steroids'
-
+* [http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids)
 * [http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls](http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls)
 
-ruby script/plugin install git://github.com/patrickelder/calendar.git
-./script/generate calendar_styles
 
 
 Install
@@ -36,7 +36,7 @@ Install
 * Install plugin form source:
 
 <pre>
-ruby script/plugin install git//github.com:tog/tog_social.git
+ruby script/plugin install git//github.com:tog/tog_conclave.git
 </pre>
 
 * Generate installation migration:
@@ -74,14 +74,9 @@ rake db:migrate
 More
 -------
 
-[http://github.com/tog/tog\_social]:(http://github.com/tog/tog_social)
+[http://github.com/tog/tog\_conclave]:(http://github.com/tog/tog_conclave)
 
-[http://github.com/tog/tog\_social/wikis](http://github.com/tog/tog_social/wikis)
-
-[Creating relationships between users](http://github.com/tog/tog_social/wikis/creating-relationships-between-users)
-
-[Showing friends, followers or followings in a portlet](http://github.com/tog/tog_social/wikis/showing-friends-followers-or-followings-in-a-portlet)
-
+[http://github.com/tog/tog\_conclave/wikis](http://github.com/tog/tog_conclave/wikis)
 
 
 Copyright (c) 2008 Keras Software Development, released under the MIT license
