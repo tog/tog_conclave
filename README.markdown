@@ -6,8 +6,6 @@ WORK IN PROGRESS. NOT READED FOR PRIME-TIME YET.
 tog_conclave is a plugin for managing events in your site.
 
 
-== Included functionality
-
 
 Included functionality
 ----------------------
