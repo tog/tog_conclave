@@ -2,9 +2,11 @@ class Event < ActiveRecord::Base
   acts_as_taggable
   seo_urls
   
-  belongs_to :owner, :class_name =>'User', :foreign_key =>'author_id'
+  belongs_to :owner, :class_name =>'User', :foreign_key =>'user_id'
   has_many   :attendances,      :dependent => :destroy
   has_many   :attendees,        :through => :attendances, :source => :user
+  
+  record_activity_of :user
   
   def register(user)
     att = Attendance.find(:first, :conditions => ["user_id = ? and event_id = ?", user.id, self.id])   
@@ -24,9 +26,15 @@ class Event < ActiveRecord::Base
     Attendance.delete_all( ["user_id = ? and event_id = ?", user.id, self.id])
   end
   
-  def available_places
-    if(self.total_places)
-      return self.total_places - self.attendances.size
+  def opening_time
+    result = "From #{self.start_date.strftime('%m/%d/%Y')} #{self.start_time.strftime('%H:%m')}" 
+    result << " to #{self.end_date.strftime('%m/%d/%Y')} #{self.end_time.strftime('%H:%m')}"
+    result
+  end
+  
+  def available_capacity
+    if(self.capacity)
+      return self.capacity - self.attendances.size
     else
       return 0
     end

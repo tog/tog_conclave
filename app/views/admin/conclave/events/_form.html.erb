@@ -11,19 +11,19 @@
     </p>
     <p>
       <label for="event_start_date">Start date</label>
-      <%= f.date_select :start_date, :class=>"fieldbox" %> (yyyy-mm-dd)
+      <%= f.date_select :start_date, :class=>"fieldbox" %>
     </p>
     <p>
       <label for="event_end_date">End date</label>
-      <%= f.date_select :end_date, :class=>"fieldbox" %> (yyyy-mm-dd)
+      <%= f.date_select :end_date, :class=>"fieldbox" %>
     </p>
 		<p>
       <label for="event_start_time">Start time</label>
-      <%= f.time_select :start_time, :class=>"fieldbox" %> (hh:mm:ss)
+      <%= f.time_select :start_time, :class=>"fieldbox" %>
     </p>
     <p>
       <label for="event_end_time">End time</label>
-      <%= f.time_select :end_time, :class=>"fieldbox" %> (hh:mm:ss)
+      <%= f.time_select :end_time, :class=>"fieldbox" %>
     </p>
 		<p>
       <label for="event_url">Url</label>
@@ -37,6 +37,10 @@
       <label for="event_venue_link">Venue link</label>
       <%= f.text_field :venue_link, :class=>"fieldbox" %>
     </p>
+		<p>
+      <label for="event_capacity">Capacity</label>
+      <%= f.text_field :capacity, :class=>"fieldbox" %>
+    </p>    
 		<p>
       <label for="tag_list">Tags (separated by ,)</label>
       <%= text_field "page", "tag_list", :class => "fieldbox" %>

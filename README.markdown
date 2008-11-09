@@ -25,6 +25,10 @@ require_plugin 'acts_as_taggable_on_steroids'
 
 * [http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls](http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls)
 
+ruby script/plugin install git://github.com/patrickelder/calendar.git
+./script/generate calendar_styles
+
+
 Install
 -------
 

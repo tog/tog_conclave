@@ -10,7 +10,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string   :url          #link to event website
       t.string   :venue        #name of event's location
       t.string   :venue_link   #link to location
-      t.integer  :author_id
+      t.integer  :user_id
 
       t.timestamps
     end

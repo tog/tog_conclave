@@ -2,8 +2,12 @@ namespace(:conclave) do |conclave|
   conclave.resources :events
 end
 
-with_options(:controller => 'conclave/events', :conditions => { :method => :get }) do |event|
-  event.by_date_conclave_events      '/conclave/events/by_date/:date', :action => 'by_date'  
+with_options(:controller => 'conclave/events') do |event|
+  event.calendar_navigation   '/conclave/events/cal/:year/:month', :action => 'calendar_navigation'
+  event.with_options(:action => 'date', :conditions => { :method => :get }) do |date|
+     date.daily_conclave_events   '/conclave/events/date/:year/:month/:day', :action => 'date'
+     date.monthly_conclave_events '/conclave/events/date/:year/:month', :day => nil, :action => 'date'
+  end  
 end
 
 namespace(:member) do |member|

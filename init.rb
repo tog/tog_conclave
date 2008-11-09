@@ -9,7 +9,7 @@ end
 
 Tog::Plugins.helpers Conclave::EventsHelper
 
-Tog::Interface.sections(:site).add "Eventos", "/conclave/events"
+Tog::Interface.sections(:site).add "Events", "/conclave/events"
 Tog::Interface.sections(:admin).add "Events", "/admin/conclave/events"
 
 Tog::Plugins.settings :tog_conclave,  'pagination_size' => "10"

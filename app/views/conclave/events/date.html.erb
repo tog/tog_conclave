@@ -1,5 +1,5 @@
 <div class="portlet portletB">
-    <h2><span>Events</span></h2>
+    <h2><span>Events for <%= "#{Date::MONTHNAMES[@month]} #{@year}" %></span></h2>
 
     <div class="portlet_content"> 
         <ul>
@@ -8,20 +8,25 @@
           <% else %>
               <% @events.each do |event| %>
                 <li class="clearfix">
-                  <%= link_to event.title, conclave_event_path(event), :title => event.title %> <%=event.start_time.to_s %> to <%=event.end_time.to_s %></li>
+                  <%= link_to event.title, conclave_event_path(event), :title => event.title %>
+                  <br/> <%=event.opening_time %>
+                </li>
               <% end %>
           <% end %> 
         </ul>
     </div>    
 </div>
-<% if @events.empty? %>
+<% if !@events.empty? %>
   <div class="info_results">
       <span class="info_items">
-        Events <%=@events.size > 0 ? (@events.offset + 1) : '0'%> to 
-              <%=@events.size + @events.offset%> of <%=@events.total_entries%>
+        <%= page_entries_info @events %>
       </span>
       <span class="pages_navigation right">
           <%= will_paginate @events %>
       </span>
   </div>
 <%end%>
+
+<% content_for :sidebar do %>
+  <%= render :partial => 'calendar', :locals => {:year => @year, :month => @month} -%>
+<% end -%>
