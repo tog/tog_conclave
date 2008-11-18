@@ -8,7 +8,7 @@ en-US:
     venue: venue
     map: map
     site:
-      key1: value
+      upcoming: Upcoming events
     admin:
       error: Some error prohibited to update this event
       event_created: Event {{title}} created successfully!
