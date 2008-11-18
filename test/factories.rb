@@ -14,7 +14,7 @@ Factory.define :event do |e|
   e.venue_link 'venue_link'
   e.url 'url'
   e.description 'description'
-  e.total_places 100
+  e.capacity 100
   e.venue 'venue'
   e.start_time Time.now.to_formatted_s(:db)
   e.end_time Time.now.to_formatted_s(:db)  
