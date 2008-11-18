@@ -1,5 +1,5 @@
 <div class="portlet portletB">
-    <h2><span>Events for <%= "#{Date::MONTHNAMES[@month]} #{@year}" %></span></h2>
+    <h2><span><%= I18n.t("tog_conclave.site.events_for") %> <%= "#{Date::MONTHNAMES[@month]} #{@year}" %></span></h2>
 
     <div class="portlet_content"> 
         <ul>
