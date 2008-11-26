@@ -1,5 +1,5 @@
 # {{xxx}}
-en-US:
+"en":
   tog_conclave:
     plugin_name: Conclave
     plugin_description: Little pluggin for event management
