@@ -16,7 +16,15 @@
                 <li>Venue: <%= link_to @event.venue, @event.venue_link%></li>
             </ul>
         </div> 
-    </div>    
+    </div>  
+    
+    <div id="register">
+      <% if current_user && current_user.registered?(@event) %>
+        <%= button_to "Unregister", member_conclave_unregister_path(@event) %>
+      <% else %>
+        <%= button_to "Register", member_conclave_register_path(@event) %>
+      <% end %>
+    </div>
     
 </div>
 

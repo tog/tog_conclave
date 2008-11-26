@@ -4,7 +4,8 @@ require_plugin 'seo_urls'
 
          
 Dir[File.dirname(__FILE__) + '/locale/**/*.yml'].each do |file|
-  I18n.load_translations file
+#  I18n.load_translations file
+  I18n.load_path << file
 end
 
 Tog::Plugins.helpers Conclave::EventsHelper
