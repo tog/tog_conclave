@@ -7,6 +7,7 @@ tog_conclave is a plugin for managing events in your site.
 
 
 
+
 Included functionality
 ----------------------
 
@@ -24,8 +25,8 @@ Plugin requirements
 
 * [http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids)
 * [http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls](http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls)
-
-
+* google_geocode (gem install google_geocode)
+* ym4r_gm (ruby install plugin svn://rubyforge.org/var/svn/ym4r/Plugins/GM/trunk/ym4r_gm)
 
 Install
 -------
@@ -57,11 +58,19 @@ class InstallTogConclave < ActiveRecord::Migration
 end
 </pre>
 
-* Add tog_social's routes to your application's config/routes.rb
+* Add tog_conclave's routes to your application's config/routes.rb
 
 <pre>
 map.routes_from_plugin 'tog_conclave'
 </pre> 
+
+* Get an google api key from
+
+<pre>
+[http://code.google.com/apis/maps/signup.html]:(http://code.google.com/apis/maps/signup.html)
+</pre>
+
+and replace the existing key with your key in config/gmaps_api_key.yml
 
 * And finally...
 

@@ -7,6 +7,7 @@
     date: date
     venue: venue
     map: map
+    page_not_found: Sorry, the page cannot be found.
     site:
       upcoming: Upcoming events 
       events_for: Events for

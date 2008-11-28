@@ -1,10 +1,15 @@
 class Event < ActiveRecord::Base
+  include GG
   acts_as_taggable
   seo_urls
-  
   belongs_to :owner, :class_name =>'User', :foreign_key =>'user_id'
   has_many   :attendances,      :dependent => :destroy
   has_many   :attendees,        :through => :attendances, :source => :user
+  validates_presence_of :title, :description, :venue
+  def validate
+    loc = gg.locate self.venue_link rescue nil
+    errors.add("venue_link", "Event Address not found on map") if loc.nil?
+  end
   
   record_activity_of :user
   
@@ -39,4 +44,5 @@ class Event < ActiveRecord::Base
       return 0
     end
   end
+  
 end
