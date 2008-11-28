@@ -66,7 +66,7 @@ map.routes_from_plugin 'tog_conclave'
 
 * Get an google api key from
 
-[http://code.google.com/apis/maps/signup.html]:(http://code.google.com/apis/maps/signup.html)
+[http://code.google.com/apis/maps/signup.html](http://code.google.com/apis/maps/signup.html)
 
 and replace the existing key with your key in config/gmaps_api_key.yml
 
