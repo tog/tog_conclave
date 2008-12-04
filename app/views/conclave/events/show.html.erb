@@ -25,6 +25,9 @@
         <%= button_to "Register", member_conclave_register_path(@event) %>
       <% end %>
     </div>
+    <div id="map">
+      <%= render :partial => 'map', :locals => {:width => 400, :height => 300} %>
+    </div>
     
 </div>
 

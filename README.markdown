@@ -14,8 +14,8 @@ Included functionality
 * Event list
 * Calendar/date navigation
 * Attendance management
-* event capacity limit
-
+* Event capacity limit
+* Google Maps geolocalization of events (Thanks to Surat Pyari, from Vinsol - http://www.vinsol.com)
 
 Resources
 =========

@@ -10,6 +10,7 @@ class Conclave::EventsController < ApplicationController
   end
 
   def show
+    generate_map
   end
   
   def date
@@ -37,19 +38,23 @@ class Conclave::EventsController < ApplicationController
   end  
   
   def map
-    loc = gg.locate @event.venue_link
-    @map = GMap.new("map_div_id")
-    @map.control_init(:large_map => true, :map_type => true)
-    @map.center_zoom_init([loc.latitude, loc.longitude],14)
-    marker = GMarker.new([loc.latitude,loc.longitude],
-             :title => @event.title,
-             :info_window => (@event.venue_link ? loc.address : "#{loc.address} *specified address unknown")) 
-    @map.overlay_init(marker)
+    generate_map
   end 
 
 
   
   private
+  
+    def generate_map
+      loc = gg.locate @event.venue_address
+      @map = GMap.new("map_div_id")
+      @map.control_init(:large_map => true, :map_type => true)
+      @map.center_zoom_init([loc.latitude, loc.longitude],14)
+      marker = GMarker.new([loc.latitude,loc.longitude],
+               :title => @event.title,
+               :info_window => (@event.venue_address ? loc.address : "#{loc.address} *specified address unknown")) 
+      @map.overlay_init(marker)
+    end
   
     def find_event
       @event = Event.find params[:id] rescue nil
