@@ -76,6 +76,12 @@ and replace the existing key with your key in config/gmaps_api_key.yml
 rake db:migrate
 </pre> 
 
+Note
+----
+
+You could need an PAI key for GoogleMaps. This file is located in config/gmaps_api_key.yml
+
+
 More
 -------
 
