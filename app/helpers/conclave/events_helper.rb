@@ -77,6 +77,16 @@ module Conclave
 
     end
 
+    def tag_cloud_events(classes)
+      tags = Event.tag_counts
+      return if tags.empty?
+      max_count = tags.sort_by(&:count).last.count.to_f
+      tags.each do |tag|
+        index = ((tag.count / max_count) * (classes.size - 1)).round
+        yield tag, classes[index]
+      end
+    end
+
     private
     
       def has_event?(date, events)

@@ -1,10 +1,10 @@
-<p><%= link_to "Create New",  new_admin_conclave_event_url, {:class => "button add", :title => "Add an event"} %></p>
+<p><%= link_to I18n.t("tog_conclave.admin.create_new_event"),  new_admin_conclave_event_url, {:class => "button add", :title => I18n.t("tog_conclave.admin.create_new_event")} %></p>
 <table class="tableB">
   <thead>
     <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Start date</th>
-      <th scope="col">Start time</th>
+      <th scope="col"><%= I18n.t("tog_conclave.fields.title") %></th>
+      <th scope="col"><%= I18n.t("tog_conclave.fields.start_date") %></th>
+      <th scope="col"><%= I18n.t("tog_conclave.fields.start_time") %></th>
     </tr>
   </thead>
   <tfoot>
@@ -21,7 +21,7 @@
     <% @events.each do |event| %>
 
     <tr<%= cycle(' class="pair"','') -%>>
-      <td><strong><%= link_to event.title, edit_admin_conclave_event_url(event), {:title => "Edit event"} -%></strong></td>
+      <td><strong><%= link_to event.title, admin_conclave_event_url(event), {:title => I18n.t("tog_conclave.admin.show")} -%></strong></td>
       <td><%= event.start_date -%></td>
       <td><%= event.start_time -%></td>
     </tr>

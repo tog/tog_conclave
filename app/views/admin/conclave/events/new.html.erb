@@ -1,4 +1,4 @@
-<div class="titleB">Create event</div>
+<div class="titleB"><%= I18n.t("tog_conclave.admin.create_event") %></div>
 <br />
 
 <%= error_messages_for :event %>
@@ -9,7 +9,7 @@
   <br />
 
   <div class="actions">
-    <%= submit_tag 'Create event', {:accesskey => "s", :class=>"button mainaction"} %>
+    <%= submit_tag I18n.t("tog_conclave.admin.create"), {:accesskey => "s", :class=>"button mainaction"} %>
   </div>
 
 <% end -%>

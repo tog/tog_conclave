@@ -1,5 +1,5 @@
 # {{xxx}}
-en-US:
+en:
   tog_conclave:
     plugin_name: Conclave
     plugin_description: Little pluggin for event management
@@ -7,14 +7,40 @@ en-US:
     date: date
     venue: venue
     map: map
+    fields: 
+      title: Title
+      description: Description
+      start_date: Start date
+      end_date: End date
+      start_time: Start time
+      end_time: End time
+      url: URL
+      venue: Venue
+      venue_link: Venue link
+      capacity: Capacity
+      tags: Tags
+      tags_explanation: (separated by ,)
     site:
       upcoming: Upcoming events 
       events_for: Events for
     admin:
       error: Some error prohibited to update this event
-      event_created: Event {{title}} created successfully!
-      event_updated: Event {{title}} updated successfully!      
+      event_created: Event '{{title}}' created successfully!
+      event_updated: Event '{{title}}' updated successfully!
+      deleted: Event deleted      
+      event_details: Event details
+      portlet_title: Adminstration
+      edit: Edit
+      edit_event: Edit event
+      delete: Delete
+      delete_confirmation: Are you sure you want to remove this event?
+      show: Show event
+      update_event: Update event
+      update: Update
+      create_event: Create event
+      create: Create
+      create_new_event: Create new event
     member:
       registered: You have been registered for event '{{title}}'!
       unregistered: You have been unregistered for event '{{title}}'!
-      
+      not_available: The capacity of the event is complete

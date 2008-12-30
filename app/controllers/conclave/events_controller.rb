@@ -35,6 +35,11 @@ class Conclave::EventsController < ApplicationController
     end
   end  
   
+  def tags
+    @tag  =  params[:tag]
+    @events = Event.find_tagged_with(params[:tag])
+  end
+  
   private
   
     def get_events_by_date(conditions)

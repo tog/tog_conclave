@@ -6,8 +6,12 @@ class Member::Conclave::EventsController < Member::BaseController
     
   def register
     @event = Event.find(params[:id])
-    @event.register(current_user)
-    flash[:ok] = I18n.t("tog_conclave.member.registered", :title => @event.title)
+    if @event.available_capacity>0
+      @event.register(current_user)
+      flash[:ok] = I18n.t("tog_conclave.member.registered", :title => @event.title)
+    else
+      flash[:error] = I18n.t("tog_conclave.member.not_available", :title => @event.title)
+    end
     redirect_to(conclave_event_path(@event))
   end
   
@@ -18,4 +22,8 @@ class Member::Conclave::EventsController < Member::BaseController
     redirect_to(conclave_event_path(@event))
   end
   
+  def attendees
+    @event = Event.find(params[:id])
+    @users = @event.attendees
+  end
 end

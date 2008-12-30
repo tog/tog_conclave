@@ -10,6 +10,9 @@ class Admin::Conclave::EventsController < Admin::BaseController
                                         :page => @page,
                                         :order => @order + " " + @asc
   end
+  
+  def show
+  end
 
   def new
     @event = Event.new
@@ -34,6 +37,12 @@ class Admin::Conclave::EventsController < Admin::BaseController
   rescue ActiveRecord::RecordInvalid
     flash[:error] = I18n.t("tog_conclave.admin.error")
     render :action => 'edit'
+  end
+  
+  def destroy
+    @event.destroy
+    flash[:ok]= I18n.t("tog_conclave.admin.deleted")
+    redirect_to admin_conclave_events_path
   end
   
   protected

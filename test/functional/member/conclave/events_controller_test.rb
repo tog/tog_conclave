@@ -44,4 +44,13 @@ class Member::Conclave::EventsControllerTest < ActionController::TestCase
     assert_equal 0, _event.attendees.length
   end
   
+  def test_should_get_one_attendee
+    @request.session[:user_id] = @normal_user
+    get :attendees, :id => @event.id
+    assert_response :success
+    assert_not_nil assigns["event"]
+    assert_not_nil assigns["users"]
+    assert_equal 1, assigns["users"]
+  end
+  
 end

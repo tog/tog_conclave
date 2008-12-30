@@ -39,4 +39,16 @@ class Event < ActiveRecord::Base
       return 0
     end
   end
+  
+  def places_left?
+    return available_capacity > 0
+  end
+  
+protected
+  def validate
+    if(start_date>end_date or (start_date==end_date and start_time>end_time))
+      errors.add("start_date", I18n.t("tog_conclave.admin.error"))
+    end
+  end
+
 end
