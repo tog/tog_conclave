@@ -2,38 +2,26 @@ class Conclave::EventsController < ApplicationController
   include GG
   layout "application", :except => :map
   before_filter :find_event, :only => [:show, :map]
+  before_filter :set_dates_for_navigation, :except => [:map]
+  
   def index
-    today = Date.today
-    @year  = today.year
-    @month = today.month    
-    get_events_by_date(["start_date >= ?", today])
+    get_events_by_date(["start_date >= ?", Date.today])
   end
 
   def show
     generate_map
   end
   
-  def date
-    @year  = params[:year].to_i
-    @month = params[:month].to_i
-    @day   = params[:day]
-    
-    if @day.nil?
-      month_first_day = Date.civil(@year, @month, 1)
-      month_last_day = Date.civil(@year, @month, -1) 
-    else
-      month_first_day = Date.civil(@year, @month, @day.to_i)
-      month_last_day = Date.civil(@year, @month, @day.to_i)      
-    end   
+  def date    
+    month_first_day = Date.civil(@year, @month, @day)
+    month_last_day = Date.civil(@year, @month, @day)      
     get_events_by_date(['(start_date >= ? and start_date <= ?) or (end_date >= ? and end_date <= ?)', 
                          month_first_day, month_last_day, month_first_day, month_last_day])
   end
   
   def calendar_navigation
-    year  = params[:year].to_i
-    month = params[:month].to_i
     respond_to do |format| 
-      format.html { render :partial => "calendar", :locals => {:year => year, :month => month}}
+      format.html { render :partial => "calendar", :locals => {:year => @year, :month => @month}}
     end
   end  
   
@@ -77,4 +65,11 @@ class Conclave::EventsController < ApplicationController
                            :order => @order + " " + @asc + ', start_time asc').paginate :per_page => 100,
                                                                                         :page => @page
     end
+    
+    private
+      def set_dates_for_navigation
+        @year  = params[:year]  ? params[:year].to_i  : Date.today.year
+        @month = params[:month] ? params[:month].to_i : Date.today.month
+        @day   = params[:day]   ? params[:day].to_i   : -1
+      end
 end

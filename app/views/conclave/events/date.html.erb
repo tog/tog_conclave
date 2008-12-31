@@ -7,10 +7,7 @@
             <li class="clearfix">There isn't any event at <%= @date%>.
           <% else %>
               <% @events.each do |event| %>
-                <li class="clearfix">
-                  <%= link_to event.title, conclave_event_path(event), :title => event.title %>
-                  <br/> <%=event.opening_time %>
-                </li>
+                <%= render :partial => 'list_detail', :locals => {:event => event} %>
               <% end %>
           <% end %> 
         </ul>

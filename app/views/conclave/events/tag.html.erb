@@ -1,5 +1,6 @@
+
 <div class="portlet portletB">
-    <h2><span><%= I18n.t("tog_conclave.site.upcoming") %></span></h2>
+    <h2><span><%= "#{I18n.t("tog_conclave.site.tagged_with")} #{@tag}" %></span></h2>
     <div class="portlet_content">
         <ul>
           <%@events.each do |event|%>
@@ -7,18 +8,7 @@
           <%end%>
         </ul>
     </div>    
-</div>
-<% if !@events.empty? %>
-  <div class="info_results">
-      <span class="info_items">
-        <%= page_entries_info @events %>
-      </span>
-      <span class="pages_navigation right">
-          <%= will_paginate @events %>
-      </span>
-  </div>
-<%end%>
-       
+</div>       
 
 
 <% content_for :sidebar do %>

@@ -26,6 +26,7 @@ en:
     site:
       upcoming: Upcoming events 
       events_for: Events for
+      tagged_with: Events tagged with
     admin:
       error: Some error prohibited to update this event
       event_created: Event '{{title}}' created successfully!

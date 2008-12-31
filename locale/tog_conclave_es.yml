@@ -26,6 +26,7 @@ es:
     site:
       upcoming: Próximos eventos
       events_for: Eventos para el
+      tagged_with: Eventos etiquetados con      
     admin:
       error: Algunos errores prohibieron actualizar el evento
       event_created: Evento '{{title}}' creado con éxito!
