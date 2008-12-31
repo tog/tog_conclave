@@ -13,10 +13,21 @@
         <div class="portlet_content">
             <ul>
                 <li><%if @event.url%>Url: <%=link_to @event.url,@event.url%><%end%></li>
-                <li>Venue: <%= link_to @event.venue, @event.venue_link%></li>
+                <li>Venue: <%= link_to @event.venue, map_conclave_event_path(@event), :popup => [@event.venue, 'width=600,height=400']
+ %></li>
             </ul>
         </div> 
-    </div>    
+    </div>            
+    <div id="register">
+      <% if current_user && current_user.registered?(@event) %>
+        <%= button_to "Unregister", member_conclave_unregister_path(@event) %>
+      <% else %>
+        <%= button_to "Register", member_conclave_register_path(@event) %>
+      <% end %>
+    </div>
+    <div id="map">
+      <%= render :partial => 'map', :locals => {:width => 400, :height => 300} %>
+    </div>
     
 </div>
 

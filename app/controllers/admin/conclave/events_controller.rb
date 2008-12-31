@@ -1,6 +1,6 @@
 class Admin::Conclave::EventsController < Admin::BaseController
   
-  before_filter :find_event, :except => [:index, :new]
+  before_filter :find_event, :except => [:index, :new, :create]
   
   def index
     @order = params[:order] || 'title'
@@ -15,8 +15,7 @@ class Admin::Conclave::EventsController < Admin::BaseController
   end
 
   def new
-    @event = Event.new
-    @event.url="http://"
+    @event = Event.new(:url => "http://")
   end
     
   def create
@@ -48,6 +47,10 @@ class Admin::Conclave::EventsController < Admin::BaseController
   protected
 
   def find_event
-    @event = Event.find(params[:id]) if params[:id]
+    @event = Event.find(params[:id]) rescue nil
+    if @event.nil?
+      flash[:error] = I18n.t("tog_conclave.page_not_found")
+      redirect_to admin_conclave_events_path
+    end
   end
 end

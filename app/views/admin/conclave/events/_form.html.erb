@@ -34,6 +34,12 @@
       <%= f.text_field :venue, :class=>"fieldbox" %>
     </p>
 		<p>
+      <label for="event_venue_address"><%= I18n.t("tog_conclave.fields.venue_address") %></label>
+      <%= f.text_field :venue_address, :class=>"fieldbox" %>
+      <br/>
+      <small><%= I18n.t("tog_conclave.fields.used_for_geolocation") %></small>
+    </p>
+		<p>
       <label for="event_venue_link"><%= I18n.t("tog_conclave.fields.venue_link") %></label>
       <%= f.text_field :venue_link, :class=>"fieldbox" %>
     </p>

@@ -1,5 +1,7 @@
 class Conclave::EventsController < ApplicationController
-  
+  include GG
+  layout "application", :except => :map
+  before_filter :find_event, :only => [:show, :map]
   def index
     today = Date.today
     @year  = today.year
@@ -8,7 +10,7 @@ class Conclave::EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find params[:id]
+    generate_map
   end
   
   def date
@@ -35,13 +37,36 @@ class Conclave::EventsController < ApplicationController
     end
   end  
   
-  def tags
+  def tag
     @tag  =  params[:tag]
     @events = Event.find_tagged_with(params[:tag])
   end
+
+  def map
+    generate_map
+  end 
   
   private
   
+    def generate_map
+      loc = gg.locate @event.venue_address
+      @map = GMap.new("map_div_id")
+      @map.control_init(:large_map => true, :map_type => true)
+      @map.center_zoom_init([loc.latitude, loc.longitude],14)
+      marker = GMarker.new([loc.latitude,loc.longitude],
+               :title => @event.title,
+               :info_window => (@event.venue_address ? loc.address : "#{loc.address} *specified address unknown")) 
+      @map.overlay_init(marker)
+    end
+  
+    def find_event
+      @event = Event.find params[:id] rescue nil
+      if @event.nil?
+        flash[:error] = I18n.t("tog_conclave.page_not_found")
+        redirect_to conclave_events_path
+      end
+    end
+    
     def get_events_by_date(conditions)
       @order = params[:order] || 'start_date'
       @page = params[:page] || '1'

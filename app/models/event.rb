@@ -1,10 +1,17 @@
 class Event < ActiveRecord::Base
+  
+  include GG
   acts_as_taggable
   seo_urls
-  
   belongs_to :owner, :class_name =>'User', :foreign_key =>'user_id'
   has_many   :attendances,      :dependent => :destroy
   has_many   :attendees,        :through => :attendances, :source => :user
+  validates_presence_of :title, :description, :venue
+  
+  def validate
+    loc = gg.locate self.venue_address rescue nil
+    errors.add("venue_address", "Event Address not found on map") if loc.nil?
+  end
   
   record_activity_of :user
   
@@ -44,11 +51,11 @@ class Event < ActiveRecord::Base
     return available_capacity > 0
   end
   
-protected
-  def validate
-    if(start_date>end_date or (start_date==end_date and start_time>end_time))
-      errors.add("start_date", I18n.t("tog_conclave.admin.error"))
+  protected
+    def validate
+      if(start_date>end_date or (start_date==end_date and start_time>end_time))
+        errors.add("start_date", I18n.t("tog_conclave.admin.error"))
+      end
     end
-  end
 
 end

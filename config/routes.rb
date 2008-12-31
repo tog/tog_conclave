@@ -1,5 +1,5 @@
 namespace(:conclave) do |conclave|
-  conclave.resources :events, :collection => {:tags => :get}
+  conclave.resources :events, :member => {:map => :get}, :collection => {:tag => :get}
 end
 
 with_options(:controller => 'conclave/events') do |event|
