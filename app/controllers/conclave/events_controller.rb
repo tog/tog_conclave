@@ -49,6 +49,7 @@ class Conclave::EventsController < ApplicationController
   private
   
     def generate_map
+      return if !@event.venue_address
       loc = gg.locate @event.venue_address
       @map = GMap.new("map_div_id")
       @map.control_init(:large_map => true, :map_type => true)
