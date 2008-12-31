@@ -25,7 +25,7 @@ Plugin requirements
 
 * [http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids)
 * [http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls](http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls)
-* google_geocode <pre>gem install google_geocode</pre>
+* google-geocode <pre>gem install google-geocode</pre>
 * ym4r_gm <pre>ruby script/plugin install svn://rubyforge.org/var/svn/ym4r/Plugins/GM/trunk/ym4r_gm</pre>
 
 Install
