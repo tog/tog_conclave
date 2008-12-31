@@ -1,49 +1,49 @@
 # {{xxx}}
-en:
+es:
   tog_conclave:
     plugin_name: Conclave
-    plugin_description: Little pluggin for event management
-    event: event
-    date: date
-    venue: venue
-    map: map
-    page_not_found: Sorry, the page cannot be found.
+    plugin_description: Pequeño plugin para la gestión de eventos
+    event: Evento
+    date: Fecha
+    venue: Lugar
+    map: Mapa
+    page_not_found: Disculpa, la página no puede encontrarse.
     fields: 
-      title: Title
-      description: Description
-      start_date: Start date
-      end_date: End date
-      start_time: Start time
-      end_time: End time
+      title: Título
+      description: Descripción
+      start_date: Fecha de inicio
+      end_date: Fecha de finalización
+      start_time: Hora de inicio
+      end_time: Hora de finalización
       url: URL
-      venue: Venue
-      venue_link: Venue link
-      venue_address: Venue address
-      used_for_geolocation: Used for geolocation
-      capacity: Capacity
-      tags: Tags
-      tags_explanation: (separated by ,)
+      venue: Lugar
+      venue_link: Enlace al lugar
+      venue_address: Dirección del lugar
+      used_for_geolocation: Usado para geolocalización
+      capacity: Capacidad
+      tags: Etiquetas
+      tags_explanation: (separadas por ,)
     site:
-      upcoming: Upcoming events 
-      events_for: Events for
+      upcoming: Próximos eventos
+      events_for: Eventos para el
     admin:
-      error: Some error prohibited to update this event
-      event_created: Event '{{title}}' created successfully!
-      event_updated: Event '{{title}}' updated successfully!
-      deleted: Event deleted      
-      event_details: Event details
-      portlet_title: Adminstration
-      edit: Edit
-      edit_event: Edit event
-      delete: Delete
-      delete_confirmation: Are you sure you want to remove this event?
-      show: Show event
-      update_event: Update event
-      update: Update
-      create_event: Create event
-      create: Create
-      create_new_event: Create new event
+      error: Algunos errores prohibieron actualizar el evento
+      event_created: Evento '{{title}}' creado con éxito!
+      event_updated: Evento '{{title}}' actualizado  con éxito!
+      deleted: Evento eliminado      
+      event_details: Detalles del evento
+      portlet_title: Administración
+      edit: Editar
+      edit_event: Editar evento
+      delete: Eliminar
+      delete_confirmation: ¿Está seguro de que quiere eliminar este evento?
+      show: Mostrar evento
+      update_event: Actualizar evento
+      update: Actualizar
+      create_event: Crear evento
+      create: Crear
+      create_new_event: Crear un nuevo evento
     member:
-      registered: You have been registered for event '{{title}}'!
-      unregistered: You have been unregistered for event '{{title}}'!
-      not_available: The capacity of the event is complete
+      registered: Te has registrado para el evento '{{title}}'!
+      unregistered: Te has borrado del evento '{{title}}'!
+      not_available: No quedan plazas en este evento
