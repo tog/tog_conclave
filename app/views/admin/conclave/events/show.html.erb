@@ -1,0 +1,10 @@
+<h1><%= link_to I18n.t("tog_conclave.plugin_name"), admin_conclave_events_path%> / <%=@event.title%></h1>
+
+<p>
+<%= link_to I18n.t("tog_conclave.admin.edit"), edit_admin_conclave_event_url(@event), {:title => I18n.t("tog_conclave.admin.edit_event"), :class => 'button'} -%>
+
+<%= link_to I18n.t("tog_conclave.admin.delete"), admin_conclave_event_path(@event), :confirm => I18n.t("tog_conclave.admin.delete_confirmation"), :method => :delete, :class => "button delete" %>
+</p>
+
+
+<%= render :partial => 'details' %>

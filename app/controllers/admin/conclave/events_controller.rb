@@ -16,6 +16,7 @@ class Admin::Conclave::EventsController < Admin::BaseController
 
   def new
     @event = Event.new(:url => "http://")
+    @event.capacity = 0
   end
     
   def create

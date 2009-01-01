@@ -28,6 +28,9 @@ es:
       events_for: Eventos para el
       tagged_with: Eventos etiquetados con      
     admin:
+      localization: Localización 
+      datetimes: Fechas y horas   
+      attendance: Asistencia              
       error: Algunos errores prohibieron actualizar el evento
       event_created: Evento '{{title}}' creado con éxito!
       event_updated: Evento '{{title}}' actualizado  con éxito!

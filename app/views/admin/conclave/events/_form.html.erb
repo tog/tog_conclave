@@ -1,58 +1,74 @@
-<fieldset>
-  <legend><%= I18n.t("tog_conclave.admin.event_details") %></legend>
-  <div class="fields">
-    <p>
-      <label for="event_title"><%= I18n.t("tog_conclave.fields.title") %></label>
-      <%= f.text_field :title, :class=>"fieldbox" %>
-    </p>
-		<p>
-      <label for="event_description"><%= I18n.t("tog_conclave.fields.description") %></label>
-      <%= f.text_area :description, :class=>"fieldbox" %>
-    </p>
-    <p>
-      <label for="event_start_date"><%= I18n.t("tog_conclave.fields.start_date") %></label>
-      <%= f.date_select :start_date, :class=>"fieldbox" %>
-    </p>
-    <p>
-      <label for="event_end_date"><%= I18n.t("tog_conclave.fields.end_date") %></label>
-      <%= f.date_select :end_date, :class=>"fieldbox" %>
-    </p>
-		<p>
-      <label for="event_start_time"><%= I18n.t("tog_conclave.fields.start_time") %></label>
-      <%= f.time_select :start_time, :class=>"fieldbox" %>
-    </p>
-    <p>
-      <label for="event_end_time"><%= I18n.t("tog_conclave.fields.end_time") %></label>
-      <%= f.time_select :end_time, :class=>"fieldbox" %>
-    </p>
-		<p>
-      <label for="event_url"><%= I18n.t("tog_conclave.fields.url") %></label>
-      <%= f.text_field :url, :class=>"fieldbox" %>
-    </p>
-		<p>
-      <label for="event_venue"><%= I18n.t("tog_conclave.fields.venue") %></label>
-      <%= f.text_field :venue, :class=>"fieldbox" %>
-    </p>
-		<p>
-      <label for="event_venue_address"><%= I18n.t("tog_conclave.fields.venue_address") %></label>
-      <%= f.text_field :venue_address, :class=>"fieldbox" %>
-      <br/>
-      <small><%= I18n.t("tog_conclave.fields.used_for_geolocation") %></small>
-    </p>
-		<p>
-      <label for="event_venue_link"><%= I18n.t("tog_conclave.fields.venue_link") %></label>
-      <%= f.text_field :venue_link, :class=>"fieldbox" %>
-    </p>
-		<p>
-      <label for="event_capacity"><%= I18n.t("tog_conclave.fields.capacity") %></label>
-      <%= f.text_field :capacity, :class=>"fieldbox" %>
-    </p>    
-		<p>
-      <label for="event_tag_list"><%= I18n.t("tog_conclave.fields.tags") %> <%= I18n.t("tog_conclave.fields.tags_explanation") %></label>
-      <%= text_field "event", "tag_list", :class => "fieldbox" %>
-    </p>    
-  </div>
-</fieldset>
-
+<table class="tableE">
+  <caption><%= I18n.t("tog_conclave.admin.event_details") %></caption>
+  <tbody>
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.title") %></th>
+      <td nowrap="nowrap"><%=f.text_field :title, :class=>"fieldbox" %></td>
+  </tr>
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.description") %></th>
+      <td nowrap="nowrap"><%=f.text_area :description, :size => '40x6', :class=>"fieldbox" %></td>
+  </tr>     
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.url") %></th>
+      <td nowrap="nowrap"><%=f.text_field :url, :class=>"fieldbox" %></td>
+  </tr>
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.tags") %></th>
+      <td nowrap="nowrap">
+        <%= text_field "event", "tag_list", :class => "fieldbox" %>
+        <br/>
+        <small><%= I18n.t("tog_conclave.fields.tags_explanation") %></small>
+      </td>      
+  </tr>           
+</tbody></table>
+<table class="tableE">
+  <caption><%= I18n.t("tog_conclave.admin.datetimes") %></caption>
+  <tbody>
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.start_date") %></th>
+      <td nowrap="nowrap"><%=f.date_select :start_date, :class=>"fieldbox" %></td>
+  </tr>
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.end_date") %></th>
+      <td nowrap="nowrap"><%=f.date_select :end_date, :class=>"fieldbox" %></td>
+  </tr>
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.start_time") %></th>
+      <td nowrap="nowrap"><%=f.time_select :start_time, :class=>"fieldbox" %></td>
+  </tr>
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.end_time") %></th>
+      <td nowrap="nowrap"><%=f.time_select :end_time, :class=>"fieldbox" %></td>
+  </tr>                
+</tbody></table>
+<table class="tableE">
+  <caption><%= I18n.t("tog_conclave.admin.localization") %></caption>
+  <tbody>
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.venue") %></th>
+      <td nowrap="nowrap"><%=f.text_field :venue, :class=>"fieldbox" %></td>
+  </tr>
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.venue_address") %></th>
+      <td nowrap="nowrap">
+        <%=f.text_field :venue_address, :class=>"fieldbox" %>
+        <br/>
+        <small><%= I18n.t("tog_conclave.fields.used_for_geolocation") %></small>
+      </td>
+  </tr>
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.venue_link") %></th>
+      <td nowrap="nowrap"><%=f.text_field :venue_link, :class=>"fieldbox" %></td>
+  </tr>
+</tbody></table>
+<table class="tableE">
+  <caption><%= I18n.t("tog_conclave.admin.attendance") %></caption>
+  <tbody>
+    <tr>
+        <th scope="row"><%= I18n.t("tog_conclave.fields.capacity") %></th>
+        <td nowrap="nowrap"><%=f.text_field :capacity, :class=>"fieldbox" %></td>
+    </tr>
+</tbody></table>
 
 <br />

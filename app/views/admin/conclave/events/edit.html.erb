@@ -1,14 +1,16 @@
-<div class="titleB"><%= I18n.t("tog_conclave.admin.update_event") %></div>
+<h1><%= link_to I18n.t("tog_conclave.plugin_name"), admin_conclave_events_path%> / <%= link_to @event.title, admin_conclave_event_url(@event), {:title => I18n.t("tog_conclave.admin.show")} -%></h1>
+
 <br />
 
 <%= error_messages_for :event %>
-<% form_for :event, :url => admin_conclave_event_path(@event), :html => {:id => "settings", :method => :put} do |f| -%>
+<% form_for :event, :url => admin_conclave_event_path(@event), :html => {:id => "edit_event", :method => :put} do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } %>
 
   <br />
 
-  <div class="actions">
-    <%= submit_tag I18n.t("tog_conclave.admin.update"), {:accesskey => "s", :class=>"button mainaction"} %>
-  </div>
+  <p>
+    <br/>
+    <%= submit_tag I18n.t("tog_conclave.admin.update"), {:accesskey => "s", :class=>"button"} %>
+  </p>
 
 <% end -%>

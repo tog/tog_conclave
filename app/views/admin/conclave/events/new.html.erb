@@ -1,15 +1,15 @@
-<div class="titleB"><%= I18n.t("tog_conclave.admin.create_event") %></div>
-<br />
+<h1><%= link_to I18n.t("tog_conclave.plugin_name"), admin_bookmarks_addresses_path%> /  <%= I18n.t("tog_conclave.admin.create_event") %></h1>
+
+
 
 <%= error_messages_for :event %>
 <% form_for :event, :url => admin_conclave_events_path,  :html => {:id => "settings"} do |f| -%>
 
   <%= render :partial => 'form', :locals => { :f => f } %>
 
-  <br />
-
-  <div class="actions">
-    <%= submit_tag I18n.t("tog_conclave.admin.create"), {:accesskey => "s", :class=>"button mainaction"} %>
-  </div>
-
+  <p>
+    <br />
+    <%= submit_tag I18n.t("tog_conclave.admin.create_event"), {:accesskey => "s", :class=>"button"} %>
+  </p>
+  
 <% end -%>

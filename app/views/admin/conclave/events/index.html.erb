@@ -1,15 +1,20 @@
+<h1><%= I18n.t("tog_conclave.plugin_name") %></h1>
+
 <p><%= link_to I18n.t("tog_conclave.admin.create_new_event"),  new_admin_conclave_event_url, {:class => "button add", :title => I18n.t("tog_conclave.admin.create_new_event")} %></p>
+
 <table class="tableB">
   <thead>
     <tr>
       <th scope="col"><%= I18n.t("tog_conclave.fields.title") %></th>
       <th scope="col"><%= I18n.t("tog_conclave.fields.start_date") %></th>
       <th scope="col"><%= I18n.t("tog_conclave.fields.start_time") %></th>
+      <th scope="col">&nbsp;</th>
+      <th scope="col">&nbsp;</th>      
     </tr>
   </thead>
   <tfoot>
     <tr>
-      <td colspan="4" class="info_results">
+      <td colspan="5" class="info_results">
         <span class="info_items"><%= page_entries_info @events %></span>
         <span class="pages_navigation right">
           <%= will_paginate @events, :container => false %>
@@ -24,6 +29,8 @@
       <td><strong><%= link_to event.title, admin_conclave_event_url(event), {:title => I18n.t("tog_conclave.admin.show")} -%></strong></td>
       <td><%= event.start_date -%></td>
       <td><%= event.start_time -%></td>
+      <td><%= link_to I18n.t("tog_conclave.admin.edit"), edit_admin_conclave_event_url(event), {:title => I18n.t("tog_conclave.admin.edit_event"), :class => 'button'} -%></td>
+      <td><%= link_to I18n.t("tog_conclave.admin.delete"), admin_conclave_event_path(event), :confirm => I18n.t("tog_conclave.admin.delete_confirmation"), :method => :delete, :class => "button delete" %></td>      
     </tr>
 
     <% end %>

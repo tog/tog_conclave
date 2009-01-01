@@ -28,6 +28,9 @@ en:
       events_for: Events for
       tagged_with: Events tagged with
     admin:
+      localization: Localization
+      datetimes: Dates and times
+      attendance: Attendance
       error: Some error prohibited to update this event
       event_created: Event '{{title}}' created successfully!
       event_updated: Event '{{title}}' updated successfully!
