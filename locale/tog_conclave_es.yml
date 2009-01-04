@@ -2,6 +2,7 @@
 es:
   tog_conclave:
     plugin_name: Conclave
+    plugin_title: Eventos    
     plugin_description: Pequeño plugin para la gestión de eventos
     event: Evento
     date: Fecha
