@@ -18,7 +18,7 @@
       <td nowrap="nowrap">
         <%= text_field "event", "tag_list", :class => "fieldbox" %>
         <br/>
-        <small><%= I18n.t("tog_conclave.fields.tags_explanation") %></small>
+        <span class="helpinfo"><%= I18n.t("tog_conclave.fields.tags_explanation") %></span>
       </td>      
   </tr>           
 </tbody></table>
@@ -54,7 +54,7 @@
       <td nowrap="nowrap">
         <%=f.text_field :venue_address, :class=>"fieldbox" %>
         <br/>
-        <small><%= I18n.t("tog_conclave.fields.used_for_geolocation") %></small>
+        <span class="helpinfo"><%= I18n.t("tog_conclave.fields.used_for_geolocation") %></span>
       </td>
   </tr>
   <tr>

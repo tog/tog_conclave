@@ -7,9 +7,8 @@
 
   <%= render :partial => 'form', :locals => { :f => f } %>
 
-  <p>
-    <br />
+  <div class="actions">
     <%= submit_tag I18n.t("tog_conclave.admin.create_event"), {:accesskey => "s", :class=>"button"} %>
-  </p>
+  </div>
   
 <% end -%>
