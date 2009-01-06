@@ -37,7 +37,7 @@ class Conclave::EventsController < ApplicationController
   private
   
     def generate_map
-      return if !@event.venue_address
+      return if !@event.venue_address || @event.venue_address == ''
       loc = gg.locate @event.venue_address
       @map = GMap.new("map_div_id")
       @map.control_init(:large_map => true, :map_type => true)
@@ -46,6 +46,9 @@ class Conclave::EventsController < ApplicationController
                :title => @event.title,
                :info_window => (@event.venue_address ? loc.address : "#{loc.address} *specified address unknown")) 
       @map.overlay_init(marker)
+      
+    rescue
+      @map = nil
     end
   
     def find_event
