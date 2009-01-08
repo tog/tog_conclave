@@ -13,7 +13,7 @@ class Conclave::EventsController < ApplicationController
   end
   
   def date    
-    month_first_day = Date.civil(@year, @month, @day)
+    month_first_day = Date.civil(@year, @month, @day > 0 ? @day : 1)
     month_last_day = Date.civil(@year, @month, @day)      
     get_events_by_date(['(start_date >= ? and start_date <= ?) or (end_date >= ? and end_date <= ?)', 
                          month_first_day, month_last_day, month_first_day, month_last_day])
