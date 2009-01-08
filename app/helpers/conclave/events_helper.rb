@@ -1,6 +1,16 @@
 module Conclave
   module EventsHelper
 
+    def write_date(year, month, day)
+      @monthnames = I18n.t("tog_conclave.calendar.monthnames").split if !@monthnames
+      month_name = @monthnames[month - 1]
+      if day && day > 0
+        "#{day} de #{month_name} #{year}"
+      else
+        "#{month_name} #{year}"
+      end
+    end
+    
     def dates_with_events()
       events = Conclave::Event.find(:all)
       dates = Array.new
@@ -20,7 +30,10 @@ module Conclave
     end
     
     def conclave_calendar(year, month, events=nil, week_start=1)
-  
+      @monthnames = I18n.t("tog_conclave.calendar.monthnames").split if !@monthnames
+      @abbr_daynames = I18n.t("tog_conclave.calendar.abbr_daynames").split if !@abbr_daynames
+      month_name = @monthnames[month - 1]
+      
       month_first_day = Date.civil(year, month, 1)
       month_last_day = Date.civil(year, month, -1)      
       
@@ -30,7 +43,7 @@ module Conclave
       result << link_to_remote("<<", :update => "conclave_calendar", 
                                      :url => calendar_navigation_path(nav_month.year, nav_month.month))
       result << "</td><td colspan=\"5\" align=\"center\">"
-      link = link_to("#{Date::MONTHNAMES[month]} #{year}", monthly_conclave_events_path(year, month))
+      link = link_to("#{month_name} #{year}", monthly_conclave_events_path(year, month))
       result << link
       result << "</td><td>"
       nav_month = month_first_day + 1.month
@@ -41,7 +54,7 @@ module Conclave
       calendar_starts = calendar_start_date(month_first_day, week_start)
       calendar_ends = calendar_end_date(month_last_day, week_start)
       
-      day_names = Date::DAYNAMES.dup
+      day_names = @abbr_daynames.dup
       week_start.times do
         day_names.push(day_names.shift)
       end   

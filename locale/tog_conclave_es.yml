@@ -2,13 +2,18 @@
 es:
   tog_conclave:
     plugin_name: Conclave
-    plugin_title: Eventos    
+    plugin_title: Eventos
     plugin_description: Pequeño plugin para la gestión de eventos
     event: Evento
     date: Fecha
     venue: Lugar
     map: Mapa
     page_not_found: Disculpa, la página no puede encontrarse.
+    calendar:
+      monthnames: Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre
+      abbr_monthnames: Ene Feb Mar Abr May Jun Jul Ago Sep Oct Nov Dic
+      daynames: Domingo Lunes Martes Miercoles Jueves Viernes Sábado
+      abbr_daynames: Dom Lun Mar Mie Jue Vie Sab
     fields: 
       title: Título
       description: Descripción

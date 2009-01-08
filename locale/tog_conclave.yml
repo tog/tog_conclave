@@ -9,6 +9,11 @@ en:
     venue: venue
     map: map
     page_not_found: Sorry, the page cannot be found.
+    calendar:
+      monthnames: January February March April May June July August September October November December
+      abbr_monthnames: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
+      daynames: Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+      abbr_daynames: Sun Mon Tue Wed Thu Fri Sat
     fields: 
       title: Title
       description: Description
