@@ -103,7 +103,7 @@ module Conclave
     private
     
       def has_event?(date, events)
-        !events.select{|e| e.start_date == date}.blank?
+        !events.select{|e| e.start_date <= date && e.end_date >= date}.blank?
       end
     
       def calendar_start_date(date, week_start)
