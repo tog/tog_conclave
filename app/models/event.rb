@@ -8,11 +8,6 @@ class Event < ActiveRecord::Base
   has_many   :attendees,        :through => :attendances, :source => :user
   validates_presence_of :title, :description, :venue
   
-  def validate
-    loc = gg.locate self.venue_address rescue nil
-    errors.add("venue_address", "Event Address not found on map") if loc.nil?
-  end
-  
   record_activity_of :user
   
   def register(user)
@@ -54,8 +49,10 @@ class Event < ActiveRecord::Base
   protected
     def validate
       if(start_date>end_date or (start_date==end_date and start_time>end_time))
-        errors.add("start_date", I18n.t("tog_conclave.admin.error"))
+        errors.add("end_date", I18n.t("tog_conclave.fields.errors.end_date_before_start_date"))
       end
+      loc = gg.locate self.venue_address rescue nil
+      errors.add("venue_address", I18n.t("tog_conclave.fields.errors.venue_address_error")) if loc.nil?
     end
 
 end
