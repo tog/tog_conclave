@@ -1,21 +1,18 @@
 Conclave
 =========
 
-WORK IN PROGRESS. NOT READED FOR PRIME-TIME YET.
-
-tog_conclave is a plugin for managing events in your site.
-
-
+tog_conclave is a plugin for managing events in your site. It's not intended for managing conferences with conferences, authors and payment gateway (yet, and probably never). It's just to to list events and set record user's attendance.
 
 
 Included functionality
 ----------------------
 
 * Event list
-* Calendar/date navigation
+* Date navigation with an ajax calendar (calendar customizable with styles)
 * Attendance management
 * Event capacity limit
 * Google Maps geolocalization of events (Thanks to Surat Pyari, from Vinsol - http://www.vinsol.com)
+* I18n (date and time i18n based on Rails 2.2 support for il8n)
 
 Resources
 =========
@@ -27,6 +24,8 @@ Plugin requirements
 * [http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls](http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls)
 * google-geocode <pre>gem install google-geocode</pre>
 * ym4r_gm <pre>ruby script/plugin install svn://rubyforge.org/var/svn/ym4r/Plugins/GM/trunk/ym4r_gm</pre>
+
+Note: ym4r_gm seems to have a problem with Rails 2.2. But it can be resolved easily: http://railsforum.com/viewtopic.php?id=24839
 
 Install
 -------
