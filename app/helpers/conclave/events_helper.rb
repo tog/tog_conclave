@@ -28,11 +28,6 @@ module Conclave
       month = Date.today.month if !month
       
       @monthnames = I18n.t("date.month_names") if !@monthnames
-      
-      puts "+++++++++++++++++"
-      puts @monthnames
-      puts "+++++++++++++++++"
-      
       @abbr_daynames = I18n.t("date.abbr_day_names") if !@abbr_daynames
       month_name = @monthnames[month]
       
