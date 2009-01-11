@@ -27,11 +27,11 @@
   <tbody>
   <tr>
       <th scope="row"><%= I18n.t("tog_conclave.fields.start_date") %></th>
-      <td nowrap="nowrap"><%=f.date_select :start_date, :class=>"fieldbox" %></td>
+      <td nowrap="nowrap"><%=f.date_select :start_date, :use_month_names => I18n.t("date.month_names"), :class=>"fieldbox" %></td>
   </tr>
   <tr>
       <th scope="row"><%= I18n.t("tog_conclave.fields.end_date") %></th>
-      <td nowrap="nowrap"><%=f.date_select :end_date, :class=>"fieldbox" %></td>
+      <td nowrap="nowrap"><%=f.date_select :end_date, :use_month_names => I18n.t("date.month_names"), :class=>"fieldbox" %></td>
   </tr>
   <tr>
       <th scope="row"><%= I18n.t("tog_conclave.fields.start_time") %></th>
