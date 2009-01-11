@@ -1,4 +1,5 @@
 <% week_start = 1 %>
 <div id="conclave_calendar">
+  <% include_stylesheet "/tog_conclave/stylesheets/calendar" %>
   <%= conclave_calendar(year, month, events_for_month(year, month), week_start) %>
 </div>

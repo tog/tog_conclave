@@ -9,11 +9,6 @@ es:
     venue: Lugar
     map: Mapa
     page_not_found: Disculpa, la página no puede encontrarse.
-    calendar:
-      monthnames: Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre
-      abbr_monthnames: Ene Feb Mar Abr May Jun Jul Ago Sep Oct Nov Dic
-      daynames: Domingo Lunes Martes Miercoles Jueves Viernes Sábado
-      abbr_daynames: Dom Lun Mar Mie Jue Vie Sab
     fields: 
       title: Título
       description: Descripción
@@ -29,6 +24,9 @@ es:
       capacity: Capacidad
       tags: Etiquetas
       tags_explanation: (separadas por ,)
+      errors:
+        venue_address_error: La dirección del lugar no puede ser geolocalizada
+        end_date_before_start_date: La fecha de fin del evento no puede ser anterior a la de comienzo
     site:
       upcoming: Próximos eventos
       events_for: Eventos para el
@@ -37,7 +35,7 @@ es:
       localization: Localización 
       datetimes: Fechas y horas   
       attendance: Asistencia              
-      error: Algunos errores prohibieron actualizar el evento
+      error: Algunos errores prohibieron guardar el evento
       event_created: Evento '{{title}}' creado con éxito!
       event_updated: Evento '{{title}}' actualizado  con éxito!
       deleted: Evento eliminado      

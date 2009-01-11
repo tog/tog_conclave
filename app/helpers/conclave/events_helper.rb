@@ -2,25 +2,19 @@ module Conclave
   module EventsHelper
 
     def write_date(year, month, day)
-      @monthnames = I18n.t("tog_conclave.calendar.monthnames").split if !@monthnames
-      month_name = @monthnames[month - 1]
+      @monthnames = I18n.t("date.month_names") if !@monthnames
+      month_name = @monthnames[month]
       if day && day > 0
         "#{day} de #{month_name} #{year}"
       else
         "#{month_name} #{year}"
       end
     end
-    
-    def dates_with_events()
-      events = Conclave::Event.find(:all)
-      dates = Array.new
-      events.each{|event|
-        dates[dates.size] = event.start_date if !dates.include?(event.start_date)
-      }
-      return dates
-    end
 
     def events_for_month(year, month)
+      year = Date.today.year if !year
+      month = Date.today.month if !month
+      
       month_first_day = Date.civil(year, month, 1)
       month_last_day = Date.civil(year, month, -1)
       events = Event.find(:all,
@@ -29,27 +23,35 @@ module Conclave
                           :order => "start_date asc, start_time asc")      
     end
     
-    def conclave_calendar(year, month, events=nil, week_start=1)
-      @monthnames = I18n.t("tog_conclave.calendar.monthnames").split if !@monthnames
-      @abbr_daynames = I18n.t("tog_conclave.calendar.abbr_daynames").split if !@abbr_daynames
-      month_name = @monthnames[month - 1]
+    def conclave_calendar(year, month, events=nil, week_start=1)      
+      year = Date.today.year if !year
+      month = Date.today.month if !month
+      
+      @monthnames = I18n.t("date.month_names") if !@monthnames
+      
+      puts "+++++++++++++++++"
+      puts @monthnames
+      puts "+++++++++++++++++"
+      
+      @abbr_daynames = I18n.t("date.abbr_day_names") if !@abbr_daynames
+      month_name = @monthnames[month]
       
       month_first_day = Date.civil(year, month, 1)
       month_last_day = Date.civil(year, month, -1)      
       
-      result = "<table><tbody>"
+      result = "<table class=\"calendar\"><thead>"
       result << "<tr><td>"
       nav_month = month_first_day - 1.month
       result << link_to_remote("<<", :update => "conclave_calendar", 
                                      :url => calendar_navigation_path(nav_month.year, nav_month.month))
-      result << "</td><td colspan=\"5\" align=\"center\">"
+      result << "</td><td colspan=\"5\">"
       link = link_to("#{month_name} #{year}", monthly_conclave_events_path(year, month))
       result << link
       result << "</td><td>"
       nav_month = month_first_day + 1.month
       result << link_to_remote(">>", :update => "conclave_calendar", 
                                      :url => calendar_navigation_path(nav_month.year, nav_month.month))
-      result << "</td></tr>"
+      result << "</td></tr></thead><tbody>"
 
       calendar_starts = calendar_start_date(month_first_day, week_start)
       calendar_ends = calendar_end_date(month_last_day, week_start)
@@ -58,7 +60,7 @@ module Conclave
       week_start.times do
         day_names.push(day_names.shift)
       end   
-      result << "<tr>"
+      result << "<tr class=\"days\">"
       day_names.each do |d|
         result << "<th scope=\"col\"><abbr title=\"#{d}\">#{d[0..1]}</abbr></th>"        
       end    
@@ -75,9 +77,13 @@ module Conclave
         if has_event?(day, events)
           link = link_to(day.mday, 
                          daily_conclave_events_path(day.year, day.month, day.day))
-          result << "<td>#{link}</td>"
+          result << "<td class=\"with_events\">#{link}</td>"
         else
-          result << "<td>#{day.mday}</td>"
+          if day.month == month
+            result << "<td class=\"current_month\">#{day.mday}</td>"
+          else
+            result << "<td class=\"other_month\">#{day.mday}</td>"
+          end
         end
         
         if counter == 7
@@ -85,7 +91,7 @@ module Conclave
           counter = 0
         end
       end
-      result << "</table>"
+      result << "</tbody></table>"
       result 
 
     end

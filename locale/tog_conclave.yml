@@ -9,11 +9,6 @@ en:
     venue: venue
     map: map
     page_not_found: Sorry, the page cannot be found.
-    calendar:
-      monthnames: January February March April May June July August September October November December
-      abbr_monthnames: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
-      daynames: Sunday Monday Tuesday Wednesday Thursday Friday Saturday
-      abbr_daynames: Sun Mon Tue Wed Thu Fri Sat
     fields: 
       title: Title
       description: Description
@@ -29,6 +24,9 @@ en:
       capacity: Capacity
       tags: Tags
       tags_explanation: (separated by ,)
+      errors:
+        venue_address_error: Address can't not be geo-located
+        end_date_before_start_date: End date shouldn't be before start date
     site:
       upcoming: Upcoming events 
       events_for: Events for
@@ -37,7 +35,7 @@ en:
       localization: Localization
       datetimes: Dates and times
       attendance: Attendance
-      error: Some error prohibited to update this event
+      error: Some error prohibited to save this event
       event_created: Event '{{title}}' created successfully!
       event_updated: Event '{{title}}' updated successfully!
       deleted: Event deleted      

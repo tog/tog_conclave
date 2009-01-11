@@ -1,0 +1,24 @@
+.calendar {
+	width: 100%;
+}
+
+.calendar td{
+	text-align: center;
+}
+
+.calendar .days{
+	color: gray;
+}
+
+.calendar .with_events a{
+	color: red;
+  font-weight: bold;	
+}
+
+.calendar .current_month{
+  font-weight: bold;	
+}
+
+.calendar .other_month{
+	color: gray;
+}
