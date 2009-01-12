@@ -2,7 +2,7 @@
     <div class="image"></div>
     <div class="title"><%= @event.title -%></div>
     <div class="subtitle">
-      <%= @event.opening_time %>
+      <%= @event.start_date.strftime('%m/%d/%Y') %>
     </div>
     <div class="text">
         <%= sanitize textilize(@event.description) %>

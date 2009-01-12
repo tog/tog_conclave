@@ -1,6 +1,6 @@
 module Conclave
   module EventsHelper
-
+    
     def write_date(year, month, day)
       @monthnames = I18n.t("date.month_names") if !@monthnames
       month_name = @monthnames[month]

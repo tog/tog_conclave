@@ -21,9 +21,5 @@ class Member::Conclave::EventsController < Member::BaseController
     flash[:ok] = I18n.t("tog_conclave.member.unregistered", :title => @event.title)
     redirect_to(conclave_event_path(@event))
   end
-  
-  def attendees
-    @event = Event.find(params[:id])
-    @users = @event.attendees
-  end
+
 end

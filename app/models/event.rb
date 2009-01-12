@@ -11,27 +11,14 @@ class Event < ActiveRecord::Base
   record_activity_of :user
   
   def register(user)
-    att = Attendance.find(:first, :conditions => ["user_id = ? and event_id = ?", user.id, self.id])   
-
-    if att.nil?
-      registration = Attendance.new
-      registration.event = self
-      registration.user = user
-      registration.save
-      return true
-    else
-      return false
-    end
+    params = {:user_id => user.id} 
+    return false if self.attendances.find :first, :conditions => params
+    self.attendances.create params.merge!({:event => self})
+    return true    
   end
   
   def unregister(user)
     Attendance.delete_all( ["user_id = ? and event_id = ?", user.id, self.id])
-  end
-  
-  def opening_time
-    result = "From #{self.start_date.strftime('%m/%d/%Y')} #{self.start_time.strftime('%H:%m')}" 
-    result << " to #{self.end_date.strftime('%m/%d/%Y')} #{self.end_time.strftime('%H:%m')}"
-    result
   end
   
   def available_capacity
