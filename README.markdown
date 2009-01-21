@@ -65,20 +65,17 @@ map.routes_from_plugin 'tog_conclave'
 
 * Get an google api key from
 
+For a host diferent thant localhost, you will need to get an API key for Google Maps from 
+
 [http://code.google.com/apis/maps/signup.html](http://code.google.com/apis/maps/signup.html)
 
-and replace the existing key with your key in config/gmaps_api_key.yml
+and replace the existing key for your environment with your key in config/gmaps_api_key.yml
 
 * And finally...
 
 <pre> 
 rake db:migrate
 </pre> 
-
-Note
-----
-
-You could need an PAI key for GoogleMaps. This file is located in config/gmaps_api_key.yml
 
 
 More
