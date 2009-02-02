@@ -1,6 +1,14 @@
 module Conclave
   module EventsHelper
     
+    def write_event_date(event)
+      if (event.start_date != event.end_date)
+        "#{I18n.t('tog_conclave.site.from')} #{I18n.l(event.start_date, :format => :short)} #{I18n.t('tog_conclave.site.to')} #{I18n.l(event.end_date, :format => :short)}"
+      else
+        I18n.l(event.start_date, :format => :short)
+      end
+    end
+    
     def write_date(year, month, day)
       @monthnames = I18n.t("date.month_names") if !@monthnames
       month_name = @monthnames[month]

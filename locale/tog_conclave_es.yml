@@ -30,7 +30,9 @@ es:
     site:
       upcoming: Próximos eventos
       events_for: Eventos para el
-      tagged_with: Eventos etiquetados con      
+      tagged_with: Eventos etiquetados con
+      from: Del
+      to: al      
     admin:
       localization: Localización 
       datetimes: Fechas y horas   

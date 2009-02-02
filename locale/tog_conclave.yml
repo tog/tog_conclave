@@ -31,6 +31,8 @@ en:
       upcoming: Upcoming events 
       events_for: Events for
       tagged_with: Events tagged with
+      from: Form
+      to: to
     admin:
       localization: Localization
       datetimes: Dates and times
