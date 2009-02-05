@@ -1,5 +1,12 @@
 # {{xxx}}
 es:
+  interface:
+    admin:
+      events: Eventos
+    member:
+      events: Eventos
+    site:
+      events: Eventos  
   tog_conclave:
     plugin_name: Conclave
     plugin_title: Eventos
