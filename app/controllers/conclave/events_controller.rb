@@ -5,7 +5,8 @@ class Conclave::EventsController < ApplicationController
   before_filter :set_dates_for_navigation, :except => [:map]
   
   def index
-    get_events_by_date(["start_date >= ?", Date.today])
+    today = Date.today
+    get_events_by_date(["start_date >= ? or end_date <= ?", today, today])
   end
 
   def show
