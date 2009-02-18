@@ -6,7 +6,7 @@ class Conclave::EventsController < ApplicationController
   
   def index
     today = Date.today
-    get_events_by_date(["start_date >= ? or end_date <= ?", today, today])
+    get_events_by_date(["start_date >= ? or end_date >= ?", today, today])
   end
 
   def show
