@@ -1,6 +1,6 @@
 class AddSiteWideFlagToEvent < ActiveRecord::Migration
   def self.up
-    add_column :events, :site_wide, :boolean, :default => :false
+    add_column :events, :site_wide, :boolean, :default => false
     Event.find(:all).each do |e|
       e.site_wide = true
       e.save
