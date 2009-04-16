@@ -1,0 +1,14 @@
+<h1><%= link_to I18n.t("tog_conclave.plugin_title"), member_conclave_events_path %> /  <%= I18n.t("tog_conclave.admin.create_event") %></h1>
+
+
+
+<%= error_messages_for :event %>
+<% form_for :event, :url => member_conclave_events_path,  :html => {:id => "new_event"} do |f| -%>
+
+  <%= render :partial => 'form', :locals => { :f => f } %>
+
+  <div class="actions">
+    <%= submit_tag I18n.t("tog_conclave.admin.create_event"), {:accesskey => "s", :class=>"button"} %>
+  </div>
+  
+<% end -%>

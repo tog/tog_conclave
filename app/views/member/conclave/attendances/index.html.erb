@@ -1,0 +1,27 @@
+
+<div class="title3 clearfix margin1">
+    Eventos a los que asistiré
+</div> 
+<br />
+
+<ul class="list2">
+	<% if @attendances.empty? %>
+  	<li class="clearfix">No te has registrado para ninguna conferencia
+  <% else %>
+	  <% @attendances.each do |attendance| %>
+    <li class="clearfix" id="event<%=attendance.event.id.to_s%>">
+        <div class="li_content">
+            <div class="metadata">
+                <span class="meta">Título:</span> <%= link_to '<strong>'+attendance.event.title+'</strong>', conclave_event_path(attendance.event), :title => attendance.event.title %>
+                <br />
+                <span class="meta">Fecha:</span> <%=write_event_date(attendance.event) %>
+								<br />
+								<span id="current_status<%=attendance.event.id.to_s%>">
+										¡Apuntado!. <%=link_to_remote 'Finalmente no asistiré', :url=>member_conclave_event_attendance_path(attendance.event, attendance), :update=>"current_status"+attendance.event.id.to_s, :success=>"$('event"+attendance.event.id.to_s+"').hide()", :method => :delete %> 
+								</span>
+            </div>
+        </div> <!-- /.li_content -->    
+    </li>
+		<%end%>
+	<%end%>
+</ul>
