@@ -8,14 +8,15 @@ Factory.define :user do |u|
 end
 
 Factory.define :event do |e|
+  e.start_time (Time.now).to_formatted_s(:db)
+  e.end_time (Time.now + 4.hour).to_formatted_s(:db)
   e.start_date (Date.today.to_time + 1.days).to_formatted_s(:db)
-  e.end_date (Date.today.to_time + 1.days).to_formatted_s(:db)
+  e.end_date (Date.today.to_time + 2.days).to_formatted_s(:db)
   e.title 'title'
-  e.venue_link 'venue_link'
-  e.url 'url'
   e.description 'description'
+  e.venue_link 'venue_link'
+  e.venue_address 'Infinite Loop 1, 95014 Cupertino, CA'
+  e.url 'url'
   e.capacity 100
   e.venue 'venue'
-  e.start_time Time.now.to_formatted_s(:db)
-  e.end_time Time.now.to_formatted_s(:db)  
 end

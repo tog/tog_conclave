@@ -1,5 +1,16 @@
-<% week_start = 1 %>
+<% week_start = 1 
+   events = events_for_month(year, month)
+%>
 <div id="conclave_calendar">
   <% include_stylesheet "/tog_conclave/stylesheets/calendar" %>
-  <%= conclave_calendar(year, month, events_for_month(year, month), week_start) %>
+  <%= calendar_for(year, month, 
+                   :first_day_of_week => week_start, 
+                   :current_month => lambda { |d| link_to (write_date(year, month), monthly_conclave_events_path(year, month)) },
+                   :previous_month => lambda { |d| link_to_remote("<<", 
+                                                   :update => "conclave_calendar",                
+                                                   :url => calendar_navigation_path(d.year, d.month)) },
+                   :next_month => lambda { |d| link_to_remote(">>", 
+                                               :update => "conclave_calendar",                
+                                               :url => calendar_navigation_path(d.year, d.month)) },
+                   &calendar_events_proc(events)) %>
 </div>

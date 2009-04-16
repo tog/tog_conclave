@@ -1,25 +1,17 @@
-<div class="portlet portletB">
-    <h2><span><%= I18n.t("tog_conclave.site.upcoming") %></span></h2>
+<div class="portlet portletH" id="portlet_groups">
+    <h2><span><%= I18n.t("tog_conclave.views.index.upcoming") %></span></h2>
+    <p><%= link_to I18n.t("tog_conclave.views.index.create_new_event"), new_member_conclave_event_path, :class => 'button add' %></p>
     <div class="portlet_content">
         <ul>
           <%@events.each do |event|%>
             <%= render :partial => 'list_detail', :locals => {:event => event} %>
-          <%end%>
+          <%end%>          
         </ul>
     </div>    
 </div>
-<% if !@events.empty? %>
-  <div class="info_results">
-      <span class="info_items">
-        <%= page_entries_info @events %>
-      </span>
-      <span class="pages_navigation right">
-          <%= will_paginate @events %>
-      </span>
-  </div>
-<%end%>
-       
 
+
+<%= will_paginate @events %>
 
 <% content_for :sidebar do %>
   <%= render :partial => 'calendar', :locals => {:year => @year, :month => @month} -%>

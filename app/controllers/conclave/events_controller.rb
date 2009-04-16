@@ -5,8 +5,9 @@ class Conclave::EventsController < ApplicationController
   before_filter :set_dates_for_navigation, :except => [:map]
   
   def index
-    today = Date.today
-    get_events_by_date(["start_date >= ? or end_date >= ?", today, today])
+    @page = params[:page] || '1'
+    @asc = params[:asc] || 'asc'
+    @events = Event.upcoming.paginate :per_page => 10, :page => @page
   end
 
   def show
@@ -16,8 +17,8 @@ class Conclave::EventsController < ApplicationController
   def date    
     month_first_day = Date.civil(@year, @month, @day > 0 ? @day : 1)
     month_last_day = Date.civil(@year, @month, @day)      
-    get_events_by_date(['(start_date >= ? and start_date <= ?) or (end_date >= ? and end_date <= ?)', 
-                         month_first_day, month_last_day, month_first_day, month_last_day])
+    get_events_by_date(['(start_date >= ? and start_date <= ?) or (end_date >= ? and end_date <= ?) or (start_date <= ? and end_date >= ?)', 
+                         month_first_day, month_last_day, month_first_day, month_last_day, month_first_day, month_last_day])
   end
   
   def calendar_navigation
@@ -66,7 +67,7 @@ class Conclave::EventsController < ApplicationController
       @asc = params[:asc] || 'asc'
       @events = Event.find(:all,
                            :conditions => conditions, 
-                           :order => @order + " " + @asc + ', start_time asc').paginate :per_page => 100,
+                           :order => @order + " " + @asc + ', start_time asc').paginate :per_page => 10,
                                                                                         :page => @page
     end
     

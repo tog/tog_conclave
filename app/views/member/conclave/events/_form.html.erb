@@ -20,18 +20,22 @@
         <br/>
         <span class="helpinfo"><%= I18n.t("tog_conclave.fields.tags_explanation") %></span>
       </td>      
-  </tr>           
+  </tr>   
+  <tr>
+      <th scope="row"><%= I18n.t("tog_conclave.fields.icon") %></th>
+      <td nowrap="nowrap"><%= file_field "event", "icon" %></td>      
+  </tr>         
 </tbody></table>
 <table class="tableE">
-  <caption><%= I18n.t("tog_conclave.admin.datetimes") %></caption>
+  <caption><%= I18n.t("tog_conclave.admin.datetimes") %> <%= I18n.t("date.month_names")%></caption>
   <tbody>
   <tr>
       <th scope="row"><%= I18n.t("tog_conclave.fields.start_date") %></th>
-      <td nowrap="nowrap"><%=f.date_select :start_date, :use_month_names => I18n.t("date.month_names"), :class=>"fieldbox" %></td>
+      <td nowrap="nowrap"><%=f.date_select :start_date, :class=>"fieldbox" %></td>
   </tr>
   <tr>
       <th scope="row"><%= I18n.t("tog_conclave.fields.end_date") %></th>
-      <td nowrap="nowrap"><%=f.date_select :end_date, :use_month_names => I18n.t("date.month_names"), :class=>"fieldbox" %></td>
+      <td nowrap="nowrap"><%=f.date_select :end_date, :class=>"fieldbox" %></td>
   </tr>
   <tr>
       <th scope="row"><%= I18n.t("tog_conclave.fields.start_time") %></th>

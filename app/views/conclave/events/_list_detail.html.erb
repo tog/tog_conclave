@@ -1,6 +1,6 @@
 <li class="clearfix">
-    <div class="image left"><img src="garbage/foto72x72.jpg" alt="Foto XX"></div>
+    <div class="image left"><%= image_tag event.icon.url :small %></div>
     <%= link_to event.title, conclave_event_path(event), :title => event.title %>
     <br/> 
-    <%= event.start_date.strftime('%m/%d/%Y') %>
+    <%= write_event_date(event) %>
 </li>

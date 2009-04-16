@@ -1,56 +1,61 @@
 require File.dirname(__FILE__) + '/../../../test_helper'
 
-require File.dirname(__FILE__) + '/../../../../../tog_user/lib/authenticated_test_helper'
 class Member::Conclave::EventsControllerTest < ActionController::TestCase
-  include AuthenticatedTestHelper
   
-  def setup
-    @admin_user = Factory(:user, :login => 'admin_user', :admin => true)
-    @normal_user = Factory(:user, :login => 'normal_user', :admin => false)
-    @attendee_user = Factory(:user, :login => 'attendee_user', :admin => false)    
-    @event = Factory(:event, :owner => @admin_user)
-    @event.register(@attendee_user)
-  end
-
-  def test_should_get_index_with_zero_events
-    @request.session[:user_id] = @normal_user
-    get :index
-    assert_response :success
-    assert_not_nil assigns["events"]
-    assert_equal 0, assigns["events"].length
-  end
-      
-  def test_should_get_index_with_one_event
-    @request.session[:user_id] = @attendee_user
-    get :index
-    assert_response :success
-    assert_not_nil assigns["events"]
-    assert_equal 1, assigns["events"].length
-  end
-
-  def test_should_be_added_as_attendee
-    @request.session[:user_id] = @normal_user
-    get :register, :id => @event.id    
-    _event = assigns["event"]
-    assert_not_nil _event
-    assert_equal 2, _event.attendees.length
-  end
+  context "Events controller in member's area" do
+  
+    context "without a logged user" do
+      setup do
+        get :new
+      end
+      should_redirect_to "new_session_path"
+    end
+  
+    context "with a logged user" do
+      setup do
+        @chavez = Factory(:user, :login => 'chavez')
+        @request.session[:user_id] = @chavez.id
+      end
     
-  def test_should_be_removed_as_attendee
-    @request.session[:user_id] = @attendee_user
-    get :unregister, :id => @event.id    
-    _event = assigns["event"]
-    assert_not_nil _event
-    assert_equal 0, _event.attendees.length
+      context "on GET to :new" do
+        setup do
+          get :new
+        end
+        should_respond_with :success
+        should_assign_to :event
+        should_render_template :new
+        should "create a passive event" do
+          assert_equal true, assigns(:event).new_record?             
+        end
+      end 
+      
+      context "on POST to :create with correct data" do
+        setup do
+          @estart = Time.now + 1.day
+          @eend = Time.now + 2.day + 3.hour
+          post :create, :event => { :title => 'Party at home',
+                                    :description => 'Party at home',
+                                    :venue => 'home',
+                                    :start_date => @estart, :start_time => @estart,
+                                    :end_date => @eend, :end_time => @eend
+                                  }
+        end
+
+        should_assign_to :event
+        should_set_the_flash_to /created/i
+        should_redirect_to "member_conclave_events_path"
+        should "create an event" do
+          @event = Event.find(assigns(:event).id)
+          assert @event
+          assert_contains @chavez.events, @event
+          assert_equal false, assigns(:event).site_wide
+          assert_equal @estart, assigns(:event).start_time
+          assert_equal @eend, assigns(:event).end_time
+          assert_equal 'Party at home', assigns(:event).title
+        end       
+      end      
+          
+    end  
+    
   end
-  
-  def test_should_get_one_attendee
-    @request.session[:user_id] = @normal_user
-    get :attendees, :id => @event.id
-    assert_response :success
-    assert_not_nil assigns["event"]
-    assert_not_nil assigns["users"]
-    assert_equal 1, assigns["users"]
-  end
-  
 end

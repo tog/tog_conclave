@@ -8,13 +8,30 @@ class Event < ActiveRecord::Base
   has_many   :attendees,        :through => :attendances, :source => :user
   validates_presence_of :title, :description, :venue
   
-  record_activity_of :user
+  record_activity_of :owner
   
+  named_scope :upcoming, :conditions => ['end_date >= ?', Date.today], :order => "start_date asc, start_time asc"
+  
+  before_create :set_default_icon
+
+  has_attached_file :icon, {
+    :url => "/system/:class/:attachment/:id/:style_:basename.:extension",
+    :styles => {
+      :big    => Tog::Plugins.settings(:tog_conclave, "event.image.versions.big"),
+      :medium => Tog::Plugins.settings(:tog_conclave, "event.image.versions.medium"),
+      :small  => Tog::Plugins.settings(:tog_conclave, "event.image.versions.small"),
+      :tiny   => Tog::Plugins.settings(:tog_conclave, "event.image.versions.tiny")
+    }}.merge(Tog::Plugins.storage_options)
+      
   def register(user)
     params = {:user_id => user.id} 
     return false if self.attendances.find :first, :conditions => params
     self.attendances.create params.merge!({:event => self})
     return true    
+  end
+  
+  def registered?(user)
+    self.attendances.find :first, :conditions => {:user_id => user.id}     
   end
   
   def unregister(user)
@@ -33,13 +50,39 @@ class Event < ActiveRecord::Base
     return available_capacity > 0
   end
   
+  def self.site_search(query, search_options={})
+    sql = "%#{query}%"
+    Event.find(:all, :conditions => ["title like ? or description like ? or venue_address like ?", sql, sql, sql])
+  end  
+  
+  def starting_date(format=:short)
+    I18n.l(start_date, :format => format)
+  end
+  def ending_date(format=:short)
+    I18n.l(end_date, :format => format)
+  end  
+  
+  def active?
+    Time.today <= self.end_date
+  end  
+  
   protected
+  
     def validate
-      if(start_date>end_date or (start_date==end_date and start_time>end_time))
+      if (start_date > end_date || (start_date == end_date && start_time >= end_time))
         errors.add("end_date", I18n.t("tog_conclave.fields.errors.end_date_before_start_date"))
       end
       loc = gg.locate self.venue_address rescue nil
-      errors.add("venue_address", I18n.t("tog_conclave.fields.errors.venue_address_error")) if loc.nil?
+#      errors.add("venue_address", I18n.t("tog_conclave.fields.errors.venue_address_error")) if loc.nil?
     end
+    
+    def set_default_icon
+      unless self.icon?
+        if Tog::Config["plugins.tog_conclave.event.image.default"]
+          default_event_icon = File.join(RAILS_ROOT, 'public', 'tog_conclave', 'images', Tog::Config["plugins.tog_conclave.event.image.default"])
+          self.icon = File.new(default_event_icon)
+        end
+      end
+    end    
 
 end

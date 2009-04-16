@@ -31,11 +31,11 @@ es:
       capacity: Capacidad
       tags: Etiquetas
       tags_explanation: (separadas por ,)
+      icon: Icono
       errors:
         venue_address_error: La dirección del lugar no puede ser geolocalizada
         end_date_before_start_date: La fecha de fin del evento no puede ser anterior a la de comienzo
     site:
-      upcoming: Próximos eventos
       events_for: Eventos para el
       tagged_with: Eventos etiquetados con
       from: Del
@@ -64,3 +64,14 @@ es:
       registered: Te has registrado para el evento '{{title}}'!
       unregistered: Te has borrado del evento '{{title}}'!
       not_available: No quedan plazas en este evento
+      error: Algunos errores prohibieron guardar el evento
+      event_created: Evento '{{title}}' creado con éxito!
+      event_updated: Evento '{{title}}' actualizado  con éxito!
+      deleted: Evento eliminado      
+    views:
+      index:
+        upcoming: Próximos eventos
+        create_new_event: Crear un nuevo evento           
+      member:
+        index:
+          create_new_event: Crear un nuevo evento     

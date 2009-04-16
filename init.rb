@@ -1,7 +1,7 @@
 require_plugin 'tog_core'
-require_plugin 'acts_as_taggable_on_steroids'
 require_plugin 'seo_urls'
 require_plugin 'ym4r_gm'
+require_plugin 'later_dude'
 require 'g_g'
 
 
@@ -17,5 +17,11 @@ Tog::Interface.sections(:site).add "Events", "/conclave/events"
 Tog::Interface.sections(:admin).add "Events", "/admin/conclave/events"
 Tog::Interface.sections(:member).add "Events", "/member/conclave/events"
 
+Tog::Plugins.settings :tog_conclave, "pagination_size" => "10",
+                                     "event.image.default"         => "default_event_icon.png",
+                                     "event.image.versions.big"    => "150x150#",
+                                     "event.image.versions.medium" => "100x100#",
+                                     "event.image.versions.small"  => "50x50#",
+                                     "event.image.versions.tiny"   => "25x25#"
 
-Tog::Plugins.settings :tog_conclave,  'pagination_size' => "10"
+Tog::Search.sources << "Event"

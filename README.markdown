@@ -20,10 +20,10 @@ Resources
 Plugin requirements
 -------------------
 
-* [http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids)
 * [http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls](http://github.com/tog/tog/wikis/3rd-party-plugins-seo\_urls)
 * google-geocode <pre>gem install google-geocode</pre>
 * ym4r_gm <pre>ruby script/plugin install svn://rubyforge.org/var/svn/ym4r/Plugins/GM/trunk/ym4r_gm</pre>
+* later_dude <pre>ruby script/plugin install git://github.com/clemens/later_dude.git</pre>
 
 Note: ym4r_gm seems to have a problem with Rails 2.2. But it can be resolved easily: http://railsforum.com/viewtopic.php?id=24839
 
@@ -48,7 +48,7 @@ ruby script/generate migration install_tog_conclave
 <pre>
 class InstallTogConclave < ActiveRecord::Migration
   def self.up
-    migrate_plugin "tog_conclave", 3
+    migrate_plugin "tog_conclave", 6
   end
 
   def self.down
@@ -86,4 +86,4 @@ More
 [http://github.com/tog/tog\_conclave/wikis](http://github.com/tog/tog_conclave/wikis)
 
 
-Copyright (c) 2008 Keras Software Development, released under the MIT license
+Copyright (c) 2008-2009 Keras Software Development, released under the MIT license

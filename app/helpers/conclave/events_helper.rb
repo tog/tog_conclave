@@ -3,19 +3,18 @@ module Conclave
     
     def write_event_date(event)
       if (event.start_date != event.end_date)
-        "#{I18n.t('tog_conclave.site.from')} #{I18n.l(event.start_date, :format => :short)} #{I18n.t('tog_conclave.site.to')} #{I18n.l(event.end_date, :format => :short)}"
+        "#{I18n.t('tog_conclave.site.from')} #{event.starting_date} #{I18n.t('tog_conclave.site.to')} #{event.ending_date}"
       else
-        I18n.l(event.start_date, :format => :short)
+        event.starting_date
       end
     end
     
-    def write_date(year, month, day)
-      @monthnames = I18n.t("date.month_names") if !@monthnames
-      month_name = @monthnames[month]
+    def write_date(year, month, day=-1)
+      date = Date.civil(year, month, day)
       if day && day > 0
-        "#{day} de #{month_name} #{year}"
+        I18n.l(date, :format => :long)
       else
-        "#{month_name} #{year}"
+        I18n.l(date, :format => "%B %Y")
       end
     end
 
@@ -31,72 +30,14 @@ module Conclave
                           :order => "start_date asc, start_time asc")      
     end
     
-    def conclave_calendar(year, month, events=nil, week_start=1)      
-      year = Date.today.year if !year
-      month = Date.today.month if !month
-      
-      @monthnames = I18n.t("date.month_names") if !@monthnames
-      @abbr_daynames = I18n.t("date.abbr_day_names") if !@abbr_daynames
-      month_name = @monthnames[month]
-      
-      month_first_day = Date.civil(year, month, 1)
-      month_last_day = Date.civil(year, month, -1)      
-      
-      result = "<table class=\"calendar\"><thead>"
-      result << "<tr><td>"
-      nav_month = month_first_day - 1.month
-      result << link_to_remote("<<", :update => "conclave_calendar", 
-                                     :url => calendar_navigation_path(nav_month.year, nav_month.month))
-      result << "</td><td colspan=\"5\">"
-      link = link_to("#{month_name} #{year}", monthly_conclave_events_path(year, month))
-      result << link
-      result << "</td><td>"
-      nav_month = month_first_day + 1.month
-      result << link_to_remote(">>", :update => "conclave_calendar", 
-                                     :url => calendar_navigation_path(nav_month.year, nav_month.month))
-      result << "</td></tr></thead><tbody>"
-
-      calendar_starts = calendar_start_date(month_first_day, week_start)
-      calendar_ends = calendar_end_date(month_last_day, week_start)
-      
-      day_names = @abbr_daynames.dup
-      week_start.times do
-        day_names.push(day_names.shift)
-      end   
-      result << "<tr class=\"days\">"
-      day_names.each do |d|
-        result << "<th scope=\"col\"><abbr title=\"#{d}\">#{d[0..1]}</abbr></th>"        
-      end    
-      result << "</td>"   
-            
-      counter = 0
-      calendar_starts.upto(calendar_ends) do |day|
-        if counter == 0
-          result << "<tr>" 
-          counter = 0
-        end
-        counter += 1
-        
+    def calendar_events_proc(events)
+      lambda do |day|
         if has_event?(day, events)
-          link = link_to(day.mday, 
-                         daily_conclave_events_path(day.year, day.month, day.day))
-          result << "<td class=\"with_events\">#{link}</td>"
+          [link_to(day.day, daily_conclave_events_path(day.year, day.month, day.day)), { :class => "with_events" }]
         else
-          if day.month == month
-            result << "<td class=\"current_month\">#{day.mday}</td>"
-          else
-            result << "<td class=\"other_month\">#{day.mday}</td>"
-          end
-        end
-        
-        if counter == 7
-          result << "</tr>" 
-          counter = 0
+          day.day
         end
       end
-      result << "</tbody></table>"
-      result 
-
     end
 
     def tag_cloud_events(classes)
@@ -115,24 +56,6 @@ module Conclave
         !events.select{|e| e.start_date <= date && e.end_date >= date}.blank?
       end
     
-      def calendar_start_date(date, week_start)
-        weekday = date.wday
-        if weekday >= week_start
-          date - (weekday - week_start).days 
-        else
-          date - (7 - week_start + weekday).days 
-        end      
-      end
-        
-      def calendar_end_date(date, week_start)
-        weekday = date.wday
-        if weekday >= week_start
-          date + (6 - weekday + week_start).days
-        else
-          date + (week_start - weekday - 1).days
-        end      
-      end
-        
   end
   
 end
