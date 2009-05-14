@@ -1,9 +1,13 @@
 module Conclave
   module EventsHelper
-    
+
+    def write_event_time(event)
+      "#{I18n.t('tog_conclave.site.from_time')} #{event.starting_time} #{I18n.t('tog_conclave.site.to_time')} #{event.ending_time}"
+    end
+        
     def write_event_date(event)
       if (event.start_date != event.end_date)
-        "#{I18n.t('tog_conclave.site.from')} #{event.starting_date} #{I18n.t('tog_conclave.site.to')} #{event.ending_date}"
+        "#{I18n.t('tog_conclave.site.from_date')} #{event.starting_date} #{I18n.t('tog_conclave.site.to_date')} #{event.ending_date}"
       else
         event.starting_date
       end
