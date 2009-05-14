@@ -32,6 +32,7 @@ es:
       tags: Etiquetas
       tags_explanation: (separadas por ,)
       icon: Icono
+      attendants: Asistentes
       errors:
         venue_address_error: La dirección del lugar no puede ser geolocalizada
         end_date_before_start_date: La fecha de fin del evento no puede ser anterior a la de comienzo

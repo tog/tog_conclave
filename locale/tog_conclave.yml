@@ -32,6 +32,7 @@ en:
       tags: Tags
       tags_explanation: (separated by ,)
       icon: Icon
+      attendants: Attendants
       errors:
         venue_address_error: Address can't not be geo-located
         end_date_before_start_date: End date shouldn't be before start date

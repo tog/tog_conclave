@@ -19,11 +19,11 @@
         </div> 
     </div>            
     <div id="register">
-    	<%if logged_in? && @event.registered?(current_user)%>
-    		<%=link_to "Unregister", member_conclave_event_attendance_path(@event, @event), :method => :delete %>
-    	<%elsif @event.active? && @event.places_left?%>
-    		<%=link_to "Register", member_conclave_event_attendances_path(@event), :method => :post %>
-    	<%end%>      
+      <%if logged_in? && @event.registered?(current_user)%>
+        <%=link_to "Unregister", member_conclave_event_attendance_path(@event, @event), :method => :delete %>
+      <%elsif @event.active? && @event.places_left?%>
+        <%=link_to "Register", member_conclave_event_attendances_path(@event), :method => :post %>
+      <%end%>      
     </div>
     <div id="map">
       <%= render :partial => 'map', :locals => {:width => 400, :height => 300} %>
