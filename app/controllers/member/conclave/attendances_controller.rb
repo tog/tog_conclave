@@ -6,7 +6,7 @@ class Member::Conclave::AttendancesController < Member::BaseController
     
   def create
     @event = Event.find(params[:event_id])
-    if @event.available_capacity>0
+    if @event.places_left?
       @event.register(current_user)
       flash[:ok] = I18n.t("tog_conclave.member.registered", :title => @event.title)
     else
