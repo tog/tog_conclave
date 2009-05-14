@@ -12,16 +12,7 @@ class Admin::Conclave::EventsController < Admin::BaseController
   end
   
   def show
-  end
-  
-  def attendees
-    @order = params[:order] || 'login'
-    @page = params[:page] || '1'
-    @asc = params[:asc] || 'asc'
-    @attendees = @event.attendees.paginate :per_page => 10,
-                                           :page => @page,
-                                           :order => @order + " " + @asc    
-  end  
+  end 
 
   def new
     @event = Event.new(:url => "http://")

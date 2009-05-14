@@ -14,6 +14,15 @@ class Conclave::EventsController < ApplicationController
     generate_map
   end
   
+  def attendees
+    @order = params[:order] || 'login'
+    @page = params[:page] || '1'
+    @asc = params[:asc] || 'asc'
+    @attendees = @event.attendees.paginate :per_page => 10,
+                                           :page => @page,
+                                           :order => @order + " " + @asc    
+  end  
+  
   def date    
     month_first_day = Date.civil(@year, @month, @day > 0 ? @day : 1)
     month_last_day = Date.civil(@year, @month, @day)      
