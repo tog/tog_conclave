@@ -39,8 +39,9 @@ en:
       upcoming: Upcoming events 
       events_for: Events for
       tagged_with: Events tagged with
-      from: Form
+      from: From
       to: to
+      no_events_for: There isn't any events for
     admin:
       localization: Localization
       datetimes: Dates and times

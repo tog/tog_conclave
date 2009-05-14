@@ -4,7 +4,7 @@
     <div class="portlet_content"> 
         <ul>
           <% if @events.empty? %>
-            <li class="clearfix">There isn't any event at <%= write_date(@year, @month, @day) %>.
+            <li class="clearfix"><%= I18n.t('tog_conclave.site.no_events_for')%> <%= write_date(@year, @month, @day) %>.
           <% else %>
               <% @events.each do |event| %>
                 <%= render :partial => 'list_detail', :locals => {:event => event} %>

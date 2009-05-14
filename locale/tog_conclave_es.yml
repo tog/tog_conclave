@@ -40,6 +40,7 @@ es:
       tagged_with: Eventos etiquetados con
       from: Del
       to: al      
+      no_events_for: No hay eventos para    
     admin:
       localization: Localización 
       datetimes: Fechas y horas   
