@@ -28,7 +28,7 @@
     <tr<%= cycle(' class="pair"','') -%>>
       <td><strong><%= link_to event.title, admin_conclave_event_url(event), {:title => I18n.t("tog_conclave.admin.show")} -%></strong></td>
       <td><%= event.starting_date -%></td>
-      <td><%= event.start_time -%></td>
+      <td><%= event.starting_time -%></td>
       <td><%= link_to I18n.t("tog_conclave.admin.edit"), edit_admin_conclave_event_url(event), {:title => I18n.t("tog_conclave.admin.edit_event"), :class => 'button'} -%></td>
       <td><%= link_to I18n.t("tog_conclave.admin.delete"), admin_conclave_event_path(event), :confirm => I18n.t("tog_conclave.admin.delete_confirmation"), :method => :delete, :class => "button delete" %></td>      
     </tr>
