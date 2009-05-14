@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
   named_scope :upcoming, :conditions => ['end_date >= ?', Date.today], :order => "start_date asc, start_time asc"
   
   before_create :set_default_icon
+  
+  UNLIMITED_CAPACITY = -1
 
   has_attached_file :icon, {
     :url => "/system/:class/:attachment/:id/:style_:basename.:extension",
@@ -40,21 +42,28 @@ class Event < ActiveRecord::Base
   
   def available_capacity
     if(self.capacity)
-      return self.capacity - self.attendances.size
+      self.capacity == UNLIMITED_CAPACITY ? I18n.t('tog_conclave.fields.unlimited') : self.capacity - self.attendances.size
     else
       return 0
     end
   end
   
   def places_left?
-    return available_capacity > 0
+    return capacity == UNLIMITED_CAPACITY || available_capacity > 0
   end
   
   def self.site_search(query, search_options={})
     sql = "%#{query}%"
     Event.find(:all, :conditions => ["title like ? or description like ? or venue_address like ?", sql, sql, sql])
   end  
-  
+
+  def starting_time(format="%H:%M")
+    I18n.l(start_time, :format => format)
+  end
+  def ending_time(format="%H:%M")
+    I18n.l(end_time, :format => format)
+  end
+    
   def starting_date(format=:short)
     I18n.l(start_date, :format => format)
   end
@@ -63,7 +72,7 @@ class Event < ActiveRecord::Base
   end  
   
   def active?
-    Time.today <= self.end_date
+    Date.today <= self.end_date
   end  
   
   protected
