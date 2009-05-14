@@ -11,6 +11,7 @@ class Event < ActiveRecord::Base
   record_activity_of :owner
   
   named_scope :upcoming, :conditions => ['end_date >= ?', Date.today], :order => "start_date asc, start_time asc"
+  named_scope :site, :conditions => ['site_wide = ?', true]
   
   before_create :set_default_icon
   
