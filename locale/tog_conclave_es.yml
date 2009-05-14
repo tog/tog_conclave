@@ -29,19 +29,25 @@ es:
       venue_address: Dirección del lugar
       used_for_geolocation: Usado para geolocalización
       capacity: Capacidad
+      unlimited: ilimitada
       tags: Etiquetas
       tags_explanation: (separadas por ,)
       icon: Icono
       attendants: Asistentes
+      date: Fecha
+      time: Hora
       errors:
         venue_address_error: La dirección del lugar no puede ser geolocalizada
         end_date_before_start_date: La fecha de fin del evento no puede ser anterior a la de comienzo
     site:
       events_for: Eventos para el
       tagged_with: Eventos etiquetados con
-      from: Del
-      to: al      
-      no_events_for: No hay eventos para    
+      from_time: De
+      to_time: a
+      from_date: Del
+      to_date: al
+      no_events_for: No hay eventos para
+      see_attendees: Ver asistentes          
     admin:
       localization: Localización 
       datetimes: Fechas y horas   
@@ -69,7 +75,9 @@ es:
       error: Algunos errores prohibieron guardar el evento
       event_created: Evento '{{title}}' creado con éxito!
       event_updated: Evento '{{title}}' actualizado  con éxito!
-      deleted: Evento eliminado      
+      deleted: Evento eliminado  
+      register: Voy a asistir
+      unregister: No voy a asistir          
     views:
       index:
         upcoming: Próximos eventos

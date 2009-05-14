@@ -1,5 +1,5 @@
 namespace(:conclave) do |conclave|
-  conclave.resources :events, :member => {:map => :get}
+  conclave.resources :events, :member => {:map => :get, :attendees => :get}
 end
 
 with_options(:controller => 'conclave/events') do |event|
@@ -13,9 +13,6 @@ end
 
 namespace(:member) do |member|
   member.namespace(:conclave) do |conclave|
-#    conclave.register "/events/register/:id", :controller => "events", :action => "register"
-#    conclave.unregister "/events/unregister/:id", :controller => "events", :action => "unregister"
-#    conclave.attendees   "/events/attendees/:id", :controller => "events", :action => "attendees"
     conclave.attendances "/events/attendances", :controller => "attendances", :action => "index"
     conclave.resources :events, :member => {:attendees => :get } do |event|
       event.resources :attendances

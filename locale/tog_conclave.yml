@@ -29,10 +29,13 @@ en:
       venue_address: Venue address
       used_for_geolocation: Used for geolocation
       capacity: Capacity
+      unlimited: unlimited
       tags: Tags
       tags_explanation: (separated by ,)
       icon: Icon
       attendants: Attendants
+      date: Fecha
+      time: Hora      
       errors:
         venue_address_error: Address can't not be geo-located
         end_date_before_start_date: End date shouldn't be before start date
@@ -40,9 +43,12 @@ en:
       upcoming: Upcoming events 
       events_for: Events for
       tagged_with: Events tagged with
-      from: From
-      to: to
+      from_time: From
+      to_time: to
+      from_date: From
+      to_date: to
       no_events_for: There isn't any events for
+      see_attendees: See attendees
     admin:
       localization: Localization
       datetimes: Dates and times
@@ -71,6 +77,8 @@ en:
       event_created: Event '{{title}}' created successfully!
       event_updated: Event '{{title}}' updated successfully!
       deleted: Event deleted
+      register: I'm going
+      unregister: I'm not going
     views:
       index:
         upcoming: Upcoming events 
