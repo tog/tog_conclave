@@ -1,7 +1,12 @@
 class Member::Conclave::AttendancesController < Member::BaseController
   
   def index
-    @attendances = current_user.attendances
+    @order = params[:order] || 'created_at'
+    @page = params[:page] || '1'
+    @asc = params[:asc] || 'desc'
+    @attendances = current_user.attendances.paginate :per_page => 10,
+                                                     :page => @page,
+                                                     :order => @order + " " + @asc    
   end
     
   def create

@@ -6,9 +6,9 @@ class Member::Conclave::EventsController < Member::BaseController
     @order = params[:order] || 'title'
     @page = params[:page] || '1'
     @asc = params[:asc] || 'asc'
-    @events = current_user.events :per_page => 10,
-                                  :page => @page,
-                                  :order => @order + " " + @asc
+    @events = current_user.events.paginate :per_page => 10,
+                                           :page => @page,
+                                           :order => @order + " " + @asc
   end
   
   def show
