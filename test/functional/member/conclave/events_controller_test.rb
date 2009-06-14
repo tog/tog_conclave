@@ -8,7 +8,7 @@ class Member::Conclave::EventsControllerTest < ActionController::TestCase
       setup do
         get :new
       end
-      should_redirect_to "new_session_path"
+      should_redirect_to('login') {new_session_path}
     end
   
     context "with a logged user" do
@@ -43,7 +43,7 @@ class Member::Conclave::EventsControllerTest < ActionController::TestCase
 
         should_assign_to :event
         should_set_the_flash_to /created/i
-        should_redirect_to "member_conclave_events_path"
+        should_redirect_to("member's event list") {member_conclave_events_path}
         should "create an event" do
           @event = Event.find(assigns(:event).id)
           assert @event

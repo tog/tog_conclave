@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   belongs_to :owner, :class_name =>'User', :foreign_key =>'user_id'
   has_many   :attendances,      :dependent => :destroy
   has_many   :attendees,        :through => :attendances, :source => :user
-  validates_presence_of :title, :description, :venue
+  validates_presence_of :title, :description, :venue, :start_date, :end_date, :start_time, :end_time
   
   record_activity_of :owner
   
@@ -79,7 +79,7 @@ class Event < ActiveRecord::Base
   protected
   
     def validate
-      if (start_date > end_date || (start_date == end_date && start_time >= end_time))
+      if !(start_date && end_date && start_time && end_time) || (start_date > end_date || (start_date == end_date && start_time >= end_time))
         errors.add("end_date", I18n.t("tog_conclave.fields.errors.end_date_before_start_date"))
       end
       loc = gg.locate self.venue_address rescue nil

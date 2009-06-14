@@ -5,7 +5,7 @@
   <% include_stylesheet "/tog_conclave/stylesheets/calendar" %>
   <%= calendar_for(year, month, 
                    :first_day_of_week => week_start, 
-                   :current_month => lambda { |d| link_to (write_date(year, month), monthly_conclave_events_path(year, month)) },
+                   :current_month => lambda { |d| link_to(write_date(year, month), monthly_conclave_events_path(year, month)) },
                    :previous_month => lambda { |d| link_to_remote("<<", 
                                                    :update => "conclave_calendar",                
                                                    :url => calendar_navigation_path(d.year, d.month)) },
