@@ -21,7 +21,7 @@ Resources
 Install
 -------
 
-rake rails:template LOCATION=http://tr.im/tog_conversatio_0_5_1
+rake rails:template LOCATION=http://tr.im/tog_conclave_0_5
 
 
 * Get an google api key from
