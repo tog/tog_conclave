@@ -1,7 +1,7 @@
 module Version
   MAJOR = 0
-  MINOR = 4
-  TINY  = 4
+  MINOR = 5
+  TINY  = 0
   MODULE = "tog_conclave"
   STRING = [MAJOR, MINOR, TINY].join('.')
 
