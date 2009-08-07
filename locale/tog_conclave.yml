@@ -85,4 +85,6 @@ en:
         create_new_event: Create new event            
       member:
         index:
-          create_new_event: Create new event        
+          create_new_event: Create new event
+    helper:
+      photo_for_event: Photo for event {{name}}        
