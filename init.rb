@@ -2,6 +2,7 @@ require_plugin 'tog_core'
 require_plugin 'seo_urls'
 require_plugin 'ym4r-gm'
 require_plugin 'later_dude'
+require_plugin 'paperclip'
 require 'g_g'
 
 
