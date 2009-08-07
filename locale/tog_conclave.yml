@@ -87,4 +87,4 @@ en:
         index:
           create_new_event: Create new event
     helper:
-      photo_for_event: Photo for event {{name}}        
+      icon_for_event: Icon for event {{name}}        
