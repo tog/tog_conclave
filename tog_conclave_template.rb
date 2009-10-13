@@ -1,6 +1,11 @@
 gem 'google-geocode', :version => '~> 1.2.1', :lib => 'google_geocode'
 gem "RedCloth", :lib => "redcloth", :source => "http://code.whytheluckystiff.net"
-rake "gems:install"
+puts "\n"
+if yes?("Install required gems as root? (y/n)")
+  rake "gems:install", :sudo => true
+else
+  rake "gems:install", :sudo => false
+end
 
 plugin 'later_dude', :git => "git://github.com/clemens/later_dude.git"
 plugin 'ym4r-gm', :git => "git://github.com/molpe/ym4r-gm.git"
@@ -14,16 +19,6 @@ plugin 'tog_conclave', :git => "git://github.com/tog/tog_conclave.git"
 
 route "map.routes_from_plugin 'tog_conclave'"
 
-file "db/migrate/" + Time.now.strftime("%Y%m%d%H%M%S") + "_install_tog_conclave.rb",
-%q{class InstallTogConclave < ActiveRecord::Migration
-    def self.up
-      migrate_plugin "tog_conclave", 7
-    end
-
-    def self.down
-      migrate_plugin "tog_conclave", 0 
-    end
-end
-}
+generate "update_tog_migration"
 
 rake "db:migrate"
