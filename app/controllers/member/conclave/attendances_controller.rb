@@ -21,7 +21,7 @@ class Member::Conclave::AttendancesController < Member::BaseController
   end
   
   def destroy
-    @event = current_user.events.find(params[:event_id])
+    @event = Event.find(params[:event_id])
     @event.unregister(current_user)
     flash[:ok] = I18n.t("tog_conclave.member.unregistered", :title => @event.title)
     redirect_to(conclave_event_path(@event))
