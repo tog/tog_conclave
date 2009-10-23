@@ -37,7 +37,7 @@ en:
       date: Fecha
       time: Hora      
       errors:
-        venue_address_error: Address can't not be geo-located
+        venue_address_error: Address can't be geo-located
         end_date_before_start_date: End date shouldn't be before start date
     site:
       upcoming: Upcoming events 
@@ -47,13 +47,13 @@ en:
       to_time: to
       from_date: From
       to_date: to
-      no_events_for: There isn't any events for
+      no_events_for: There aren't any events for
       see_attendees: See attendees
     admin:
       localization: Localization
       datetimes: Dates and times
       attendance: Attendance
-      error: Some error prohibited to save this event
+      error: An error prevented us from saving this event
       event_created: Event '{{title}}' created successfully!
       event_updated: Event '{{title}}' updated successfully!
       deleted: Event deleted      
@@ -72,8 +72,8 @@ en:
     member:
       registered: You have been registered for event '{{title}}'!
       unregistered: You have been unregistered for event '{{title}}'!
-      not_available: The capacity of the event is complete
-      error: Some error prohibited to save this event
+      not_available: This event is full
+      error: An error prevented us from saving this event
       event_created: Event '{{title}}' created successfully!
       event_updated: Event '{{title}}' updated successfully!
       deleted: Event deleted
