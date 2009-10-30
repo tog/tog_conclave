@@ -1,7 +1,7 @@
 gem 'google-geocode', :version => '~> 1.2.1', :lib => 'google_geocode'
 gem "RedCloth", :lib => "redcloth", :source => "http://code.whytheluckystiff.net"
 puts "\n"
-if yes?("Install required gems as root? (y/n)")
+if yes?("Install required gems as root? (y/n). Answer 'n' if using Windows")
   rake "gems:install", :sudo => true
 else
   rake "gems:install", :sudo => false
@@ -22,3 +22,4 @@ route "map.routes_from_plugin 'tog_conclave'"
 generate "update_tog_migration"
 
 rake "db:migrate"
+rake "tog:plugins:copy_resources PLUGIN=tog_conclave"
