@@ -1,0 +1,91 @@
+pt-BR:
+  interface:
+    admin:
+      events: Eventos
+    member:
+      events: Eventos
+    site:
+      events: Eventos  
+  tog_conclave:
+    plugin_name: Conclave
+    plugin_title: Eventos
+    plugin_description: Pequeno plugin para gerenciamento de eventos
+    event: evento
+    date: data
+    venue: local
+    map: mapa
+    page_not_found: Desculpe, página não encontrada.
+    fields: 
+      title: Título
+      description: Descrição
+      start_date: Data de início
+      end_date: Data de finalização
+      start_time: Hora de início
+      end_time: Hora de finalização
+      url: URL
+      venue: Local
+      venue_link: Link do local
+      venue_address: Endereço
+      used_for_geolocation: Usado para geolocalização
+      capacity: Capacidade
+      unlimited: ilimitada
+      tags: Tags
+      tags_explanation: (separado por vírgula)
+      icon: Ícone
+      attendants: Participantes
+      date: Data
+      time: Hora      
+      errors:
+        venue_address_error: Endereço não pode ser geolocalizado
+        end_date_before_start_date: Data de finalização não pode ser anterior a data de início
+    site:
+      upcoming: Próximos eventod
+      events_for: Eventos para
+      tagged_with: Tag do evento
+      from_time: De
+      to_time: até
+      from_date: De
+      to_date: até
+      no_events_for: Não há eventos para
+      see_attendees: Veja os participantes
+    admin:
+      localization: Localização
+      datetimes: Datas e horários
+      attendance: Comparecimento
+      error: Erro ao salvar esse evento
+      event_created: "Evento '{{title}}' criado com sucesso!"
+      event_updated: "Evento '{{title}}' atualizado com sucesso!"
+      deleted: Evento apagado
+      event_details: Detalhes do evento
+      portlet_title: Administração
+      edit: Editar
+      edit_event: Editar evento
+      delete: Apagar
+      delete_confirmation: Tem certeza de que vai apagar esse evento?
+      show: Mostrar evento
+      update_event: Atualizar evento
+      update: Atualizar
+      create_event: Criar evento
+      create: Criar
+      create_new_event: Criar novo evento
+    member:
+      registered: "Você está registrado para o evento '{{title}}'"
+      unregistered: "Você não está mais registrado para o evento '{{title}}'"
+      not_available: A capacidade do evento está esgotada
+      error: Erro ao salvar o evento
+      event_created: "Evento '{{title}}' criado com sucesso"
+      event_updated: "Evento '{{title}}' atualizado com sucesso"
+      deleted: Evento apagado
+      register: Eu vou
+      unregister: Não vou
+      my_events: Eventos
+      no_events: Nenhum evento
+    views:
+      index:
+        upcoming: Próximos eventos
+        create_new_event: Criar novo evento
+      member:
+        index:
+          create_new_event: Criar novo evento
+    helper:
+      icon_for_event: Imagem para o evento {{name}}
