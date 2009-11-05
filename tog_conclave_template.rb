@@ -1,5 +1,4 @@
 gem 'google-geocode', :version => '~> 1.2.1', :lib => 'google_geocode'
-gem "RedCloth", :lib => "redcloth", :source => "http://code.whytheluckystiff.net"
 puts "\n"
 if yes?("Install required gems as root? (y/n). Answer 'n' if using Windows")
   rake "gems:install", :sudo => true

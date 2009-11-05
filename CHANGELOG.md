@@ -5,6 +5,7 @@ Edge
 * Added helper method to show event's icon (icon_for_event). Kudos to Jorge Álvarez (cokanan)
 * Retrieve user attendances from user model
 * Fixed template, now copies plugin's resources
+* Removed RedCloth requirement from temaplate. This gem is added by tog at installation
 
 0.5.0
 ----
