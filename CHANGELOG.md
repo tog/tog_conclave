@@ -6,6 +6,7 @@ Edge
 * Retrieve user attendances from user model
 * Fixed template, now copies plugin's resources
 * Removed RedCloth requirement from temaplate. This gem is added by tog at installation
+* New helper method to get next coming events: coming_events(limit=5)
 
 0.5.0
 ----

@@ -1,16 +1,20 @@
 module Conclave
   module EventsHelper
 
-  def icon_for_event(event, size, options={})
-    #there should always be an icon, but who knows!
-    if event.icon?
-      photo_url = event.icon.url(size)
-      options.merge!(:alt => I18n.t("tog_conclave.helper.icon_for_event", :name => event.title))
-      return image_tag(photo_url, options) if photo_url
-    else
-      return image_tag("/tog_conclave/images/#{config["plugins.tog_conclave.image.default"]}" , options)
+    def coming_events(limit=5)
+      Event.upcoming(:limit => limit)
     end
-	end
+    
+    def icon_for_event(event, size, options={})
+      #there should always be an icon, but who knows!
+      if event.icon?
+        photo_url = event.icon.url(size)
+        options.merge!(:alt => I18n.t("tog_conclave.helper.icon_for_event", :name => event.title))
+        return image_tag(photo_url, options) if photo_url
+      else
+        return image_tag("/tog_conclave/images/#{config["plugins.tog_conclave.image.default"]}" , options)
+      end
+    end
 
     def write_event_time(event)
       "#{I18n.t('tog_conclave.site.from_time')} #{event.starting_time} #{I18n.t('tog_conclave.site.to_time')} #{event.ending_time}"
