@@ -1,6 +1,9 @@
 Edge
 ----
 
+0.6.0
+----
+
 * Fixed forms to include multipart => true for event's icons. Kudos to Jorge Álvarez (cokanan)
 * Added helper method to show event's icon (icon_for_event). Kudos to Jorge Álvarez (cokanan)
 * Retrieve user attendances from user model
