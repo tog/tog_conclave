@@ -1,6 +1,9 @@
 Edge
 ----
 
+* Added optional parameter 'format' to write_event_date helper method
+
+
 0.6.0
 ----
 
