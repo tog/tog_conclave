@@ -43,9 +43,10 @@ module Conclave
       
       month_first_day = Date.civil(year, month, 1)
       month_last_day = Date.civil(year, month, -1)
+      
       events = Event.find(:all,
-                          :conditions => ['(start_date >= ? and start_date <= ?) or (end_date >= ? and end_date <= ?)', 
-                                          month_first_day, month_last_day, month_first_day, month_last_day], 
+                          :conditions => ['(start_date >= ? and start_date <= ?) or (end_date >= ? and end_date <= ?) or (start_date < ? and end_date > ?)', 
+                                          month_first_day, month_last_day, month_first_day, month_last_day, month_first_day, month_last_day], 
                           :order => "start_date asc, start_time asc")      
     end
     

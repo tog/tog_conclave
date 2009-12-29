@@ -2,6 +2,7 @@ Edge
 ----
 
 * Added optional parameter 'format' to write_event_date helper method
+* Fixed problem. events_for_month helper method gets also running events that started and finished in other months
 
 
 0.6.0
