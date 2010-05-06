@@ -3,6 +3,7 @@ class Conclave::EventsController < ApplicationController
   layout "application", :except => :map
   before_filter :find_event, :only => [:show, :map]
   before_filter :set_dates_for_navigation, :except => [:map]
+  helper LaterDude::CalendarHelper
   
   def index
     @page = params[:page] || '1'
