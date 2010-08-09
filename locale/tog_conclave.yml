@@ -70,15 +70,16 @@ en:
       create: Create
       create_new_event: Create new event
     member:
-      registered: You have been registered for event '{{title}}'!
+      registered: "You have been registered for event '{{title}}'!"
+      registered_pending: "Your registration to '{{title}}' is waiting for moderator's approval'!"
       unregistered: You have been unregistered for event '{{title}}'!
       not_available: This event is full
       error: An error prevented us from saving this event
-      event_created: Event '{{title}}' created successfully!
-      event_updated: Event '{{title}}' updated successfully!
+      event_created: "Event '{{title}}' created successfully!"
+      event_updated: "Event '{{title}}' updated successfully!"
       deleted: Event deleted
-      register: I'm going
-      unregister: I'm not going
+      register: "I'm going"
+      unregister: "I'm not going"
     views:
       index:
         upcoming: Upcoming events 

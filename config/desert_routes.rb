@@ -14,8 +14,10 @@ end
 namespace(:member) do |member|
   member.namespace(:conclave) do |conclave|
     conclave.attendances "/events/attendances", :controller => "attendances", :action => "index"
+    conclave.invite "/events/invite/:user_id", :controller => "invitations", :action => "new"
     conclave.resources :events, :member => {:attendees => :get } do |event|
-      event.resources :attendances
+      event.resources :attendances, :member => {:accept => :get, :reject => :get }
+      event.resources :invitations, :member => {:accept => :get, :reject => :get }
     end
   end
 end

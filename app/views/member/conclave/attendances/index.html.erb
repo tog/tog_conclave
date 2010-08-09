@@ -1,24 +1,30 @@
 
 <div class="title3 clearfix margin1">
-    Eventos a los que asistiré
+    Events you are attending
 </div> 
 <br />
 
 <ul class="list2">
   <% if @attendances.empty? %>
-    <li class="clearfix">No te has registrado para ninguna conferencia
+    <li class="clearfix">You are not registered for any event
   <% else %>
     <% @attendances.each do |attendance| %>
     <li class="clearfix" id="event<%=attendance.event.id.to_s%>">
         <div class="li_content">
             <div class="metadata">
-                <span class="meta">Título:</span> <%= link_to '<strong>'+attendance.event.title+'</strong>', conclave_event_path(attendance.event), :title => attendance.event.title %>
+                <span class="meta">Title:</span> <%= link_to '<strong>'+attendance.event.title+'</strong>', conclave_event_path(attendance.event), :title => attendance.event.title %>
                 <br />
-                <span class="meta">Fecha:</span> <%=write_event_date(attendance.event) %>
+                <span class="meta">Date:</span> <%=write_event_date(attendance.event) %>
                 <br />
+                <% if attendance.accepted? %>
                 <span id="current_status<%=attendance.event.id.to_s%>">
-                    ¡Apuntado!. <%=link_to_remote 'Finalmente no asistiré', :url=>member_conclave_event_attendance_path(attendance.event, attendance), :update=>"current_status"+attendance.event.id.to_s, :success=>"$('event"+attendance.event.id.to_s+"').hide()", :method => :delete %> 
+                    You're going!. <%=link_to_remote I18n.t("tog_conclave.member.unregister"), :url=>member_conclave_event_attendance_path(attendance.event, attendance), :update=>"current_status"+attendance.event.id.to_s, :success=>"$('event"+attendance.event.id.to_s+"').hide()", :method => :delete %> 
                 </span>
+                <% else %>
+                <span id="current_status<%=attendance.event.id.to_s%>">
+                    You have requested a place!. <%=link_to_remote 'Remove request', :url=>member_conclave_event_attendance_path(attendance.event, attendance), :update=>"current_status"+attendance.event.id.to_s, :success=>"$('event"+attendance.event.id.to_s+"').hide()", :method => :delete %> 
+                </span>                
+                <% end %>
             </div>
         </div> <!-- /.li_content -->    
     </li>

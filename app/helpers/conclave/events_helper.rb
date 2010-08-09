@@ -1,8 +1,12 @@
 module Conclave
   module EventsHelper
 
+    def past_events(limit=5)
+      Event.past.all(:limit => limit)
+    end
+    
     def coming_events(limit=5)
-      Event.upcoming(:limit => limit)
+      Event.upcoming.all(:limit => limit)
     end
     
     def icon_for_event(event, size, options={})

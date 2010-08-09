@@ -1,0 +1,30 @@
+<div class="title3 clearfix margin1">
+    Invite <%= @user.profile.full_name%> to your events
+</div> 
+<br />
+
+<ul class="list2">
+  <% if @events.empty? %>
+    <li class="clearfix">You haven't create any event
+  <% else %>
+    <% @events.each do |event| %>
+      <% unless  event.registered?(@user)%>
+        <li class="clearfix" id="event<%=event.id.to_s%>">
+            <div class="li_content">
+                <div class="metadata">
+                    <span class="meta">Title:</span> <%= link_to '<strong>'+event.title+'</strong>', conclave_event_path(event), :title => event.title %>
+                    <br />
+                    <span class="meta">Date:</span> <%=event.start_date.to_s %>
+                    <br />
+                    <span class="meta">Time:</span> From <%=event.start_time.to_s %> to <%=event.end_time.to_s %>
+                    <br />
+                    <span id="current_status<%=event.id.to_s%>">
+                        <%=link_to "Invite to this event", member_conclave_event_invitations_path(event, :user => @user), :method => :post, :class => "button" %>
+                    </span>
+                </div>
+            </div> <!-- /.li_content -->    
+        </li>
+      <% end %>
+    <%end%>
+  <%end%>
+</ul>

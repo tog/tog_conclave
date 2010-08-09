@@ -1,3 +1,30 @@
+# == Schema Information
+# Schema version: 20100622215122
+#
+# Table name: events
+#
+#  id                :integer         not null, primary key
+#  title             :string(255)
+#  description       :text
+#  start_date        :date
+#  end_date          :date
+#  start_time        :time
+#  end_time          :time
+#  url               :string(255)
+#  venue             :string(255)
+#  venue_link        :string(255)
+#  user_id           :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#  capacity          :integer         default(-1)
+#  venue_address     :string(255)
+#  site_wide         :boolean
+#  icon_file_name    :string(255)
+#  icon_content_type :string(255)
+#  icon_file_size    :integer
+#  icon_updated_at   :datetime
+#  moderated         :boolean
+#
 class Event < ActiveRecord::Base
   
   include GG
@@ -5,12 +32,13 @@ class Event < ActiveRecord::Base
   seo_urls
   belongs_to :owner, :class_name =>'User', :foreign_key =>'user_id'
   has_many   :attendances,      :dependent => :destroy
-  has_many   :attendees,        :through => :attendances, :source => :user
+  has_many   :attendees,        :through => :attendances, :source => :user, :conditions => ['attendances.status = ?', Attendance::STATUS_ACCEPTED]
   validates_presence_of :title, :description, :venue, :start_date, :end_date, :start_time, :end_time
   
   record_activity_of :owner
   
-  named_scope :upcoming, :conditions => ['end_date >= ?', Date.today], :order => "start_date asc, start_time asc"
+  named_scope :upcoming, lambda { |*args| { :conditions => ['end_date >= ?', args.first || Date.today], :order => 'start_date asc, start_time asc' } }  
+  named_scope :past, lambda { |*args| { :conditions => ['start_date <= ?', args.first || Date.today], :order => 'start_date desc, start_time desc' } }  
   named_scope :site, :conditions => ['site_wide = ?', true]
   
   before_create :set_default_icon
@@ -26,11 +54,11 @@ class Event < ActiveRecord::Base
       :tiny   => Tog::Plugins.settings(:tog_conclave, "event.image.versions.tiny")
     }}.merge(Tog::Plugins.storage_options)
       
-  def register(user)
+  def register(user, invitation=false)
     params = {:user_id => user.id} 
     return false if self.attendances.find :first, :conditions => params
-    self.attendances.create params.merge!({:event => self})
-    return true    
+    self.attendances.create params.merge!({:invitation => invitation,
+                                           :status => self.moderated? ? Attendance::STATUS_PENDING : Attendance::STATUS_ACCEPTED})
   end
   
   def registered?(user)

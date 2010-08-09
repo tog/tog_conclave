@@ -1,4 +1,6 @@
-gem 'google-geocode', :version => '~> 1.2.1', :lib => 'google_geocode'
+#gem 'google-geocode', :version => '~> 1.2.1', :lib => 'google_geocode'
+gem 'geokit', :version => '1.3.0'
+
 puts "\n"
 if yes?("Install required gems as root? (y/n). Answer 'n' if using Windows")
   rake "gems:install", :sudo => true
